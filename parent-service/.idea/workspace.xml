@@ -2,10 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/controller/AuthorityController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/pojo/bo/JwtTokenBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/IAuthorityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/impl/AuthorityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/utils/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/enumeration/SystemEnumeration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/exception/BaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/exception/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/AbstractResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/ResponseObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/TransformUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/test/java/com/flower/sea/authservice/AuthServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/DistributedSwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/DistributedSwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -14,6 +33,7 @@
     <ignored path="$PROJECT_DIR$/eureka-service/target/" />
     <ignored path="$PROJECT_DIR$/gateway-service/target/" />
     <ignored path="$PROJECT_DIR$/auth-service/target/" />
+    <ignored path="$PROJECT_DIR$/common-service/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,32 +47,31 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/AuthServiceApplication.java">
+        <entry file="file://$PROJECT_DIR$/gateway-service/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-              <folding>
-                <element signature="e#363#364#0" expanded="true" />
-                <element signature="e#436#437#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="200">
+              <caret line="17" column="42" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gateway-service/pom.xml">
+        <entry file="file://$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/DistributedSwaggerConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+            <state relative-caret-position="336">
+              <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auth-service/pom.xml">
+        <entry file="file://$PROJECT_DIR$/auth-service/src/main/resources/bootstrap.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="125">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -62,6 +81,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -84,15 +105,34 @@
         <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/CrossConfig.java" />
         <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/filter/GatewayFilter.java" />
         <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/SwaggerConfig.java" />
-        <option value="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/IntegrateSwaggerConfig.java" />
         <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/single/HttpServletRequestSingle.java" />
         <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/filter/AuthFilter.java" />
         <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/utils/HttpServletRequestUtils.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/auth-service/pom.xml" />
         <option value="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/AuthServiceApplication.java" />
         <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/resources/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/common-service/pom.xml" />
+        <option value="$PROJECT_DIR$/auth-service/pom.xml" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/enumeration/UserEnumeration.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/enumeration/SystemEnumeration.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/exception/BusinessException.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/exception/BaseException.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/RespPageRecurrence.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/AbstractResponse.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/ResponseObject.java" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/pojo/bo/JwtTokenBO.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/TransformUtils.java" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/utils/JwtUtils.java" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/SwaggerConfig.java" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/controller/AuthorityController.java" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/IAuthorityService.java" />
+        <option value="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/impl/AuthorityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/DistributedSwaggerConfig.java" />
       </list>
     </option>
   </component>
@@ -104,10 +144,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="370" />
-    <option name="y" value="50" />
-    <option name="width" value="1433" />
-    <option name="height" value="829" />
+    <option name="x" value="452" />
+    <option name="y" value="27" />
+    <option name="width" value="1289" />
+    <option name="height" value="902" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -127,37 +167,47 @@
             <path>
               <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="parent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway-service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="parent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="parent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="parent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="parent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="authservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="parent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gatewayservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="parent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gatewayservice" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -174,18 +224,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8 (2)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/eureka-service/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.flower.sea.authservice" />
       <recent name="com.flower.sea.gatewayservice" />
       <recent name="com.flower.sea.gatewayservice.filter" />
       <recent name="com.flower.sea.gatewayservice.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\zl\flower_sea\parent-service\common-service\src\main\java\com\flower\sea\commonservice" />
+      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources" />
       <recent name="E:\zl\flower_sea\parent-service\eureka-service\src\main\resources" />
     </key>
   </component>
@@ -201,9 +254,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayServiceApplication">
+  <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flower.sea.authservice.utils.JwtUtils" />
+      <module name="auth-service" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flower.sea.authservice.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,6 +291,13 @@
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="auth-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.flower.sea.authservice.AuthServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="common-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.flower.sea.commonservice.CommonServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -267,6 +341,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JwtUtils" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -278,7 +357,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572933903814</updated>
-      <workItem from="1572933907677" duration="17970000" />
+      <workItem from="1572933907677" duration="29688000" />
     </task>
     <task id="LOCAL-00001" summary="提交父级项目">
       <created>1572934125567</created>
@@ -329,11 +408,18 @@
       <option name="project" value="LOCAL" />
       <updated>1573011752736</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="提交鉴权服务">
+      <created>1573012443021</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1573012443021</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17970000" />
+    <option name="totallyTimeSpent" value="29688000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -345,7 +431,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.23782235" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.18553008" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.63391656" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
@@ -357,8 +443,8 @@
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32974428" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info anchor="bottom" id="Run" order="10" />
-      <window_info anchor="bottom" id="Debug" order="11" visible="true" weight="0.12651414" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.25706595" />
+      <window_info active="true" anchor="bottom" id="Debug" order="11" visible="true" weight="0.24091521" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="14" />
@@ -382,7 +468,8 @@
     <MESSAGE value="提交注册中心服务" />
     <MESSAGE value="提交网关服务" />
     <MESSAGE value="提交网关服务最新代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交网关服务最新代码" />
+    <MESSAGE value="提交鉴权服务" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交鉴权服务" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/eurka-service/pom.xml">
@@ -447,23 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/DistributedSwaggerConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gateway-service/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="29" column="7" selection-start-line="29" selection-end-line="29" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-zuul/2.0.0.RELEASE/spring-cloud-netflix-zuul-2.0.0.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/support/FilterConstants.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -501,13 +571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/GatewayServiceApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -519,28 +582,239 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gateway-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/AuthServiceApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        <state relative-caret-position="325">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/auth-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="555">
+          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gateway-service/pom.xml">
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/enumeration/UserEnumeration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        <state relative-caret-position="180">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/enumeration/SystemEnumeration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100">
+          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/RuntimeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/exception/BaseException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/exception/BusinessException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding>
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#1001#1002#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#438#439#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
+            <element signature="e#1435#1436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/RespPageRecurrence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/RespRecurrence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-685">
+          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/AbstractResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/ResponseObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="141" column="11" selection-start-line="141" selection-start-column="11" selection-end-line="141" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.12.RELEASE/spring-web-5.0.12.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="175" column="16" selection-start-line="175" selection-start-column="4" selection-end-line="175" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/pojo/bo/JwtTokenBO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-400">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/TransformUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/utils/JwtUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="85" column="68" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/IAuthorityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="18" column="68" lean-forward="true" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/impl/AuthorityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="76" selection-start-line="19" selection-start-column="76" selection-end-line="19" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/controller/AuthorityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gateway-service/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/config/DistributedSwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

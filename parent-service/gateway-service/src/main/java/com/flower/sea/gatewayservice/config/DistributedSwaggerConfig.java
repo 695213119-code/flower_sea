@@ -18,13 +18,13 @@ import java.util.List;
 @Primary
 public class DistributedSwaggerConfig implements SwaggerResourcesProvider {
 
-    private final String version = "1.0.0";
+    private static final String VERSION = "1.0.0";
 
 
     @Override
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
-        resources.add(swaggerResource("用户服务Swagger", "/apigateway/user/v2/api-docs"));
+        resources.add(swaggerResource("鉴权服务Swagger", "/apigateway/auth-service/v2/api-docs"));
         return resources;
     }
 
@@ -32,7 +32,7 @@ public class DistributedSwaggerConfig implements SwaggerResourcesProvider {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
-        swaggerResource.setSwaggerVersion(version);
+        swaggerResource.setSwaggerVersion(VERSION);
         return swaggerResource;
     }
 }
