@@ -22,7 +22,8 @@
     <!--子模块配置-->
     <modules>
         <module>eureka-service</module>
-
+        <module>gateway-service</module>
+        <module>auth-service</module>
     </modules>
 
     <!--公共/基础的依赖版本配置-->
