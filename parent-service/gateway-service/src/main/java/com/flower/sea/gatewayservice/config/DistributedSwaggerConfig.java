@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Component
 @Primary
-public class IntegrateSwaggerConfig implements SwaggerResourcesProvider {
+public class DistributedSwaggerConfig implements SwaggerResourcesProvider {
 
     private final String version = "1.0.0";
 
@@ -24,7 +24,7 @@ public class IntegrateSwaggerConfig implements SwaggerResourcesProvider {
     @Override
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
-        resources.add(swaggerResource("用户中心服务Swagger", "/apigateway/user-center/v2/api-docs"));
+        resources.add(swaggerResource("用户服务Swagger", "/apigateway/user/v2/api-docs"));
         return resources;
     }
 
