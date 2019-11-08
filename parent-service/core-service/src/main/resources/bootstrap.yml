@@ -1,0 +1,13 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: core-service
+
+eureka:
+  instance:
+    ip-address: 49.232.143.52
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.ip-address}:9000/eureka/

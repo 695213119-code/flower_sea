@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author zhangLei
  * @serial 2019/11/6
  */
-@RequestMapping("/authority")
+@RequestMapping("/api/authority")
 @RestController
 @Api(tags = "鉴权")
 public class AuthorityController {

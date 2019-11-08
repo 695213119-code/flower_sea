@@ -25,6 +25,7 @@
         <module>gateway-service</module>
         <module>auth-service</module>
         <module>common-service</module>
+        <module>core-service</module>
     </modules>
 
     <!--公共/基础的依赖版本配置-->
@@ -57,6 +58,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!--hystrix-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
 
         <!--swagger2 版本需要指定1.5 否则会报错-->
@@ -95,6 +102,7 @@
             <artifactId>hutool-all</artifactId>
             <version>4.1.14</version>
         </dependency>
+
         <!-- jackson -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>

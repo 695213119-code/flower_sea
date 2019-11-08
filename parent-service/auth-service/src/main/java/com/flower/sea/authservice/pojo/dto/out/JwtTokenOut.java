@@ -1,4 +1,4 @@
-package com.flower.sea.authservice.pojo.vo;
+package com.flower.sea.authservice.pojo.dto.out;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Builder
-public class JwtTokenVO {
+public class JwtTokenOut {
 
     @ApiModelProperty("解析出来的用户id")
     private Long userId;

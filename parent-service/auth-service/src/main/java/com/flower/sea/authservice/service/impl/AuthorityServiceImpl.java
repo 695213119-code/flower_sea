@@ -1,7 +1,7 @@
 package com.flower.sea.authservice.service.impl;
 
 import com.flower.sea.authservice.pojo.bo.JwtTokenBO;
-import com.flower.sea.authservice.pojo.vo.JwtTokenVO;
+import com.flower.sea.authservice.pojo.dto.out.JwtTokenOut;
 import com.flower.sea.authservice.service.IAuthorityService;
 import com.flower.sea.authservice.utils.JwtUtils;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
@@ -34,7 +34,7 @@ public class AuthorityServiceImpl implements IAuthorityService {
             return validTokenResponse;
         }
         JwtTokenBO jwtToken = validTokenResponse.getData();
-        return ResponseObject.success(JwtTokenVO.builder().userId(jwtToken.getUid())
+        return ResponseObject.success(JwtTokenOut.builder().userId(jwtToken.getUid())
                 .crateTime(LocalDateTime.ofEpochSecond(jwtToken.getSta() / 1000, 0, ZoneOffset.ofHours(8)))
                 .expireTime(LocalDateTime.ofEpochSecond(jwtToken.getExp() / 1000, 0, ZoneOffset.ofHours(8)))
                 .build());
