@@ -1,5 +1,5 @@
 app:
-  explain: 核心服务,负责提供系统的核心/并且与业务无关的接口
+  explain: 核心服务,负责提供系统的核心接口
 
 spring:
   rabbitmq:

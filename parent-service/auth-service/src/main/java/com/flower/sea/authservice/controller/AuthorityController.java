@@ -1,6 +1,7 @@
 package com.flower.sea.authservice.controller;
 
 import com.flower.sea.authservice.service.IAuthorityService;
+import com.flower.sea.commonservice.annotation.ApiMenuAnnotation;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
