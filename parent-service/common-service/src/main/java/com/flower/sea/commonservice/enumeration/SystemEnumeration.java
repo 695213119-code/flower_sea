@@ -8,9 +8,19 @@ package com.flower.sea.commonservice.enumeration;
  */
 public enum SystemEnumeration {
     /**
-     * 业务异常/服务异常
+     * 业务异常
      */
-    BUSINESS_EXCEPTION(600, "服务器报错啦");
+    BUSINESS_EXCEPTION(600, "服务器报错啦"),
+
+    /**
+     * 成功
+     */
+    SUCCESS_CODE(200, "成功"),
+
+    /**
+     * 失败
+     */
+    FAIL_CODE(500, "失败");
 
 
     private Integer code;

@@ -6,7 +6,6 @@ import com.flower.sea.commonservice.enumeration.SystemEnumeration;
 import com.flower.sea.commonservice.exception.BusinessException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.JsonUtils;
-import com.flower.sea.commonservice.utils.TransformUtils;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -100,12 +99,12 @@ public class JwtUtils {
     }
 
     /**
-     * 校验token
+     * 解析token
      *
      * @param token token
      * @return Map<String, Object>
      */
-    public static ResponseObject validToken(String token) {
+    public static ResponseObject<JwtTokenBO> analysisToken(String token) {
         Map<String, Object> valid;
         try {
             valid = valid(token);
@@ -114,13 +113,17 @@ public class JwtUtils {
             log.error("校验Token失败,异常信息:{}", e.getMessage());
             throw new BusinessException(SystemEnumeration.BUSINESS_EXCEPTION.getMessage());
         }
+        if (CollUtil.isEmpty(valid)) {
+            log.error("解析到的JwtToken数据为空,数据为:{}", valid);
+            throw new BusinessException(SystemEnumeration.BUSINESS_EXCEPTION.getMessage());
+        }
         JwtTokenBO jwtToken = new JwtTokenBO();
         if (CollUtil.isNotEmpty(valid)) {
             Integer result = (Integer) valid.get(RESULT);
             if (null != result && !CALIBRATION_PASS.equals(result)) {
-                return ResponseObject.fail(HttpStatus.UNAUTHORIZED.value(), CHECK_FAILED_TOKEN_OVERDUE.equals(result) ? "token已过期" : "无效的token");
+                return ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), CHECK_FAILED_TOKEN_OVERDUE.equals(result) ? "token已过期" : "无效的token");
             }
-            jwtToken = (JwtTokenBO) valid.get(DATA);
+            jwtToken = JsonUtils.json2Object((String) valid.get(DATA), JwtTokenBO.class);
         }
         return ResponseObject.success(jwtToken);
     }
@@ -143,7 +146,7 @@ public class JwtUtils {
 
     /**
      * 解析token
-     * Result-0 正确 Result-1 错误   Result-2超时
+     * Result-0 正确 Result-1 错误   Result-2 超时
      *
      * @param token token
      * @return Map<String, Object>
@@ -158,7 +161,7 @@ public class JwtUtils {
         if (jwsObject.verify(jwsVerifier)) {
             resultMap.put(RESULT, CALIBRATION_PASS);
             JSONObject jsonObject = payload.toJSONObject();
-            resultMap.put(DATA, jsonObject);
+            resultMap.put(DATA, jsonObject.toJSONString());
             if (jsonObject.containsKey(EXP)) {
                 Long expTime = Long.valueOf(jsonObject.get(EXP).toString());
                 Long nowTime = System.currentTimeMillis();

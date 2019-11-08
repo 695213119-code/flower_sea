@@ -1,5 +1,7 @@
 package com.flower.sea.commonservice.utils;
 
+import cn.hutool.core.collection.CollUtil;
+
 import java.lang.reflect.Field;
 import java.util.Map;
 
@@ -20,7 +22,7 @@ public class TransformUtils {
      */
     public static <T> T mapToBean(Map<String, Object> map, Class<?> clazz) throws Exception {
         Object obj = clazz.newInstance();
-        if (map != null && !map.isEmpty() && map.size() > 0) {
+        if (CollUtil.isNotEmpty(map)) {
             for (Map.Entry<String, Object> entry : map.entrySet()) {
                 String propertyName = entry.getKey();
                 Object value = entry.getValue();

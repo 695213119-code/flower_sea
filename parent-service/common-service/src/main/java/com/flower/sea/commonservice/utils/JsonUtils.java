@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
@@ -39,6 +38,7 @@ public class JsonUtils {
         return objectMapper;
     }
 
+
     public static String object2Json(Object o) {
         StringWriter sw = new StringWriter();
         JsonGenerator gen = null;
@@ -64,12 +64,6 @@ public class JsonUtils {
     }
 
 
-    /**
-     * 将 json 字段串转换为 对象.
-     *
-     * @param json  字符串
-     * @param clazz 需要转换为的类
-     */
     public static <T> T json2Object(String json, Class<T> clazz) {
         try {
             return OBJECT_MAPPER.readValue(json, clazz);
@@ -78,9 +72,7 @@ public class JsonUtils {
         }
     }
 
-    /**
-     * 将 json 字段串转换为 List.
-     */
+
     public static <T> List<T> json2List(String json, Class<T> clazz) {
         JavaType type = OBJECT_MAPPER.getTypeFactory().constructCollectionType(List.class, clazz);
 
@@ -92,9 +84,6 @@ public class JsonUtils {
     }
 
 
-    /**
-     * 将 json 字段串转换为 数据.
-     */
     public static <T> T[] json2Array(String json, Class<T[]> clazz) {
         try {
             return OBJECT_MAPPER.readValue(json, clazz);
@@ -113,36 +102,5 @@ public class JsonUtils {
         }
     }
 
-    public static JsonNode object2Node(Object o) {
-        try {
-            if (o == null) {
-                return OBJECT_MAPPER.createObjectNode();
-            } else {
-                return OBJECT_MAPPER.convertValue(o, JsonNode.class);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("不能序列化对象为Json", e);
-        }
-    }
-
-    /**
-     * JsonNode转换为Java泛型对象，可以是各种类型。
-     *
-     * @param json String
-     * @param tr   TypeReference,例如: new TypeReference< List<FamousUser> >(){}
-     * @return List对象列表
-     */
-    public static <T> T json2GenericObject(String json, TypeReference<T> tr) {
-
-        if (json == null || "".equals(json)) {
-            throw new RuntimeException("将 Json 转换为对象时异常,数据是:" + json);
-        } else {
-            try {
-                return (T) OBJECT_MAPPER.readValue(json, tr);
-            } catch (Exception e) {
-                throw new RuntimeException("将 Json 转换为对象时异常,数据是:" + json, e);
-            }
-        }
-    }
 
 }
