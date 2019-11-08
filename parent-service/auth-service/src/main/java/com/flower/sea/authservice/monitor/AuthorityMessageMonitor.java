@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 public class AuthorityMessageMonitor {
 
     @RabbitHandler
-    public void process(String authentication_queue) {
+    public void process(String authenticationQueue) {
         log.info("-----开始上传权限API配置-----");
-        System.out.println("Receiver:" + authentication_queue);
+        System.out.println("Receiver:" + authenticationQueue);
     }
 }

@@ -3,6 +3,8 @@ package com.flower.sea.commonservice.annotation;
 import java.lang.annotation.*;
 
 /**
+ * 自定义权限注解
+ *
  * @author zhangLei
  * @serial 2019/11/8
  */

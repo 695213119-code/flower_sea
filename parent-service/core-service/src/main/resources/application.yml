@@ -1,3 +1,6 @@
+app:
+  explain: 核心服务,负责提供系统的核心/并且与业务无关的接口
+
 spring:
   rabbitmq:
     host: 49.232.143.52

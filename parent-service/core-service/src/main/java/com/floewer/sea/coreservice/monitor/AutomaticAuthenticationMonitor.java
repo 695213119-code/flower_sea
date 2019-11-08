@@ -1,11 +1,13 @@
 package com.floewer.sea.coreservice.monitor;
 
 import com.flower.sea.commonservice.annotation.AuthorityAnnotation;
+import com.flower.sea.commonservice.bo.AuthorityAppBO;
 import com.flower.sea.commonservice.enumeration.middlewareEnumeration;
 import com.flower.sea.commonservice.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Component;
@@ -23,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 自动上传权限API配置类
+ * 自动上传权限API监听类
  *
  * @author zhangLei
  * @serial 2019/11/8
@@ -35,6 +37,13 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
     private final WebApplicationContext applicationContext;
     private final AmqpTemplate rabbitmqTemplate;
 
+    @Value("${spring.application.name}")
+    private String appName;
+
+    @Value("${app.explain}")
+    private String appExplain;
+
+
     @Autowired
     public AutomaticAuthenticationMonitor(WebApplicationContext applicationContext, AmqpTemplate rabbitmqTemplate) {
         this.applicationContext = applicationContext;
@@ -42,7 +51,10 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
+        AuthorityAppBO authorityApp = new AuthorityAppBO();
+        authorityApp.setAppName(appName);
+        authorityApp.setAppExplain(appExplain);
         RequestMappingHandlerMapping mapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
         Map<RequestMappingInfo, HandlerMethod> map = mapping.getHandlerMethods();
         List<Map<String, String>> recordList = new ArrayList<>();
@@ -65,7 +77,6 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
             }
         }
         recordList.forEach(System.out::println);
-        String json = JsonUtils.object2Json(recordList);
-        rabbitmqTemplate.convertAndSend(middlewareEnumeration.AUTHENTICATION_QUEUE_TYPE.getType(), json);
+        rabbitmqTemplate.convertAndSend(middlewareEnumeration.AUTHENTICATION_QUEUE_TYPE.getType(), JsonUtils.object2Json(authorityApp));
     }
 }
