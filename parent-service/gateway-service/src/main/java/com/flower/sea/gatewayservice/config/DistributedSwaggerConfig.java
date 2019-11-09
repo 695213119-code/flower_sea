@@ -25,6 +25,7 @@ public class DistributedSwaggerConfig implements SwaggerResourcesProvider {
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
         resources.add(swaggerResource("鉴权服务Swagger", "/apigateway/auth-service/v2/api-docs"));
+        resources.add(swaggerResource("核心服务Swagger", "/apigateway/core-service/v2/api-docs"));
         return resources;
     }
 

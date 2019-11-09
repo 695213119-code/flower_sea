@@ -1,0 +1,33 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  instance:
+    ip-address: 49.232.143.52
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.ip-address}:9000/eureka/
+
+zuul:
+  routes:
+    #鉴权服务
+    auth-service: /apigateway/auth-service/**
+    core-service: /apigateway/core-service/**
+  ignored-patterns: /*-service/**
+  sensitive-headers:
+
+#配置超时时间,
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

@@ -16,6 +16,8 @@ import java.util.jar.JarFile;
 
 
 /**
+ * Class工具类
+ *
  * @author zhangLei
  * @serial 2019/11/8
  */
@@ -27,14 +29,14 @@ public class ClassUtils {
     /**
      * 获取类加载器
      */
-    public static ClassLoader getClassLoader() {
+    private static ClassLoader getClassLoader() {
         return Thread.currentThread().getContextClassLoader();
     }
 
     /**
      * 加载类
      */
-    public static Class<?> loadClass(String className, boolean isInitialized) {
+    private static Class<?> loadClass(String className, boolean isInitialized) {
         Class<?> cls;
         try {
             cls = Class.forName(className, isInitialized, getClassLoader());

@@ -49,6 +49,7 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        log.info("----开始上传权限api----");
         AuthorityAppBO authorityApp = new AuthorityAppBO();
         authorityApp.setAppName(appName);
         authorityApp.setAppExplain(appExplain);
@@ -77,9 +78,16 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
             authorityApp.setAuthorityMenu(authorityMenuList);
         }
         rabbitmqTemplate.convertAndSend(middlewareEnumeration.AUTHENTICATION_QUEUE_TYPE.getType(), JsonUtils.object2Json(authorityApp));
+        log.info("----已将权限api数据上传至鉴权中心----");
     }
 
-
+    /**
+     * 获取方法的请求路径
+     *
+     * @param method method
+     * @param url    当前controller的路径
+     * @return AuthorityApiBO
+     */
     private AuthorityApiBO getMethodUrl(Method method, String url) {
         AuthorityApiBO authorityApiBO = new AuthorityApiBO();
         StringBuilder sb = new StringBuilder();
