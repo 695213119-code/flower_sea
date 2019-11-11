@@ -75,7 +75,6 @@ public class JsonUtils {
 
     public static <T> List<T> json2List(String json, Class<T> clazz) {
         JavaType type = OBJECT_MAPPER.getTypeFactory().constructCollectionType(List.class, clazz);
-
         try {
             return OBJECT_MAPPER.readValue(json, type);
         } catch (IOException e) {
