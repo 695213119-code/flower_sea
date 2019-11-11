@@ -1,9 +1,8 @@
 package com.flower.sea.authservice.monitor;
 
 import com.flower.sea.authservice.service.IAuthorityService;
-import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.JsonUtils;
-import com.flower.sea.entityservice.upload.api.AuthorityApp;
+import com.flower.sea.commonservice.core.AuthorityApp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -49,7 +49,7 @@ public class Menu extends Model<Menu> {
 
     @ApiModelProperty(value = "创建时间")
     @TableField("create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @ApiModelProperty(value = "更新者")
     @TableField("update_by")
@@ -57,7 +57,7 @@ public class Menu extends Model<Menu> {
 
     @ApiModelProperty(value = "更新时间")
     @TableField("update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     @ApiModelProperty(value = "删除状态 1-已删除 2-未删除")
     @TableField("is_deleted")

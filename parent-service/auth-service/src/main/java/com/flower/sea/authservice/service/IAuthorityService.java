@@ -1,7 +1,7 @@
 package com.flower.sea.authservice.service;
 
 import com.flower.sea.commonservice.recurrence.ResponseObject;
-import com.flower.sea.entityservice.upload.api.AuthorityApp;
+import com.flower.sea.commonservice.core.AuthorityApp;
 
 /**
  * 权限

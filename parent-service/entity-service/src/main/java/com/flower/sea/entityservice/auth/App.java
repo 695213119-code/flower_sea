@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * <p>
@@ -27,7 +26,6 @@ import java.util.Date;
 public class App extends Model<App> {
 
     private static final long serialVersionUID = 1L;
-
 
     @ApiModelProperty(value = "主键id")
     private Long id;

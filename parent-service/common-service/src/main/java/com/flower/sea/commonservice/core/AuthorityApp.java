@@ -1,4 +1,4 @@
-package com.flower.sea.entityservice.upload.api;
+package com.flower.sea.commonservice.core;
 
 import lombok.Data;
 

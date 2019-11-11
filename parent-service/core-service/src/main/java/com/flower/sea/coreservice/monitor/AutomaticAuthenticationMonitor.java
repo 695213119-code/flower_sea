@@ -3,12 +3,12 @@ package com.flower.sea.coreservice.monitor;
 import cn.hutool.core.collection.CollUtil;
 import com.flower.sea.commonservice.annotation.ApiMenuAnnotation;
 import com.flower.sea.commonservice.annotation.AuthorityAnnotation;
+import com.flower.sea.commonservice.core.AuthorityApi;
+import com.flower.sea.commonservice.core.AuthorityApp;
+import com.flower.sea.commonservice.core.AuthorityMenu;
 import com.flower.sea.commonservice.enumeration.middlewareEnumeration;
 import com.flower.sea.commonservice.utils.ClassUtils;
 import com.flower.sea.commonservice.utils.JsonUtils;
-import com.flower.sea.entityservice.upload.api.AuthorityApi;
-import com.flower.sea.entityservice.upload.api.AuthorityApp;
-import com.flower.sea.entityservice.upload.api.AuthorityMenu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,35 +89,35 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
      * @return AuthorityApi
      */
     private AuthorityApi getMethodUrl(Method method, String url) {
-        AuthorityApi authorityApiBO = new AuthorityApi();
+        AuthorityApi authorityApi = new AuthorityApi();
         StringBuilder sb = new StringBuilder();
         sb.append(url);
         PostMapping postMapping = method.getAnnotation(PostMapping.class);
         if (null != postMapping) {
-            authorityApiBO.setMethod("POST");
-            authorityApiBO.setUrl(sb.append(postMapping.value()[0]).toString());
+            authorityApi.setMethod("POST");
+            authorityApi.setUrl(sb.append(postMapping.value()[0]).toString());
         }
         GetMapping getMapping = method.getAnnotation(GetMapping.class);
         if (null != getMapping) {
-            authorityApiBO.setMethod("GET");
-            authorityApiBO.setUrl(sb.append(getMapping.value()[0]).toString());
+            authorityApi.setMethod("GET");
+            authorityApi.setUrl(sb.append(getMapping.value()[0]).toString());
         }
         PutMapping putMapping = method.getAnnotation(PutMapping.class);
         if (null != putMapping) {
-            authorityApiBO.setMethod("PUT");
-            authorityApiBO.setUrl(sb.append(putMapping.value()[0]).toString());
+            authorityApi.setMethod("PUT");
+            authorityApi.setUrl(sb.append(putMapping.value()[0]).toString());
         }
         DeleteMapping deleteMapping = method.getAnnotation(DeleteMapping.class);
         if (null != deleteMapping) {
-            authorityApiBO.setMethod("DELETE");
-            authorityApiBO.setUrl(sb.append(deleteMapping.value()[0]).toString());
+            authorityApi.setMethod("DELETE");
+            authorityApi.setUrl(sb.append(deleteMapping.value()[0]).toString());
         }
         RequestMapping requestMapping = method.getAnnotation(RequestMapping.class);
         if (null != requestMapping) {
-            authorityApiBO.setMethod("POST,GET,PUT,DELETE");
-            authorityApiBO.setUrl(sb.append(requestMapping.value()[0]).toString());
+            authorityApi.setMethod("POST,GET,PUT,DELETE");
+            authorityApi.setUrl(sb.append(requestMapping.value()[0]).toString());
         }
-        return authorityApiBO;
+        return authorityApi;
     }
 
 
