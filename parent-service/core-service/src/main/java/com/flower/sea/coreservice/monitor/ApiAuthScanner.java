@@ -58,6 +58,7 @@ public class ApiAuthScanner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         log.info("----------开始上传权限API接口----------");
+
         AuthorityApp authorityApp = new AuthorityApp();
         authorityApp.setAppName(appName);
         authorityApp.setAppExplain(appExplain);

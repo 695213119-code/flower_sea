@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/core/AuthorityMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/core/AuthorityMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/controller/DictionariesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/controller/DictionariesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/monitor/ApiAuthScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/monitor/ApiAuthScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/monitor/AutomaticAuthenticationMonitor.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -417,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573460027219</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="完善权限api自动提交的代码编写">
+      <created>1573479582021</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1573479582021</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
