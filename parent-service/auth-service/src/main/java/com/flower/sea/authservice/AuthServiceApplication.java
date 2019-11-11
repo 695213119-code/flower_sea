@@ -1,5 +1,6 @@
 package com.flower.sea.authservice;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -14,6 +15,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableHystrix
+@MapperScan(value = {"com.flower.sea.authservice.auth.mapper"})
 public class AuthServiceApplication {
 
     public static void main(String[] args) {

@@ -1,0 +1,78 @@
+package ${package.ServiceImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+##import org.springframework.beans.factory.annotation.Autowired;
+##import org.springframework.transaction.annotation.Transactional;
+##import com.junteng.frameworkbaseclient.result.PageResult;
+##import com.baomidou.mybatisplus.plugins.Page;
+##import java.util.List;
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+#if(${kotlin})
+open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
+
+}
+#else
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+##    @Autowired
+##    private  ${table.mapperName} ${table.entityPath}Mapper;
+##
+##    @Override
+##    public PageResult<List<${entity}>> findList(Integer pageNum, Integer pageSize) {
+##        if(pageNum == null){
+##           pageNum=1;
+##        }
+##        if(pageSize==null|| pageSize <= 0 || pageSize > 200){
+##           pageSize=200;
+##        }
+##        // 当前页，总条数 构造 page 对象
+##        Page<${entity}> page = new Page<>(pageNum, pageSize);
+##        //查询
+##        List<${entity}> list = ${table.entityPath}Mapper.findList(page);
+##        return (PageResult) new PageResult<>(list,page).success();
+##    }
+##
+##    /**
+##    * 根据id查询
+##    */
+##    @Override
+##    public ${entity} find${entity}ById(String id){
+##        return ${table.entityPath}Mapper.findById(id);
+##    }
+##    /**
+##    * 批量新增
+##    */
+##    @Override
+##    @Transactional
+##    public boolean insert(List<${entity}> list){
+##      return insertBatch(list);
+##    }
+##    /**
+##    * 根据ID删除
+##    */
+##    public boolean deleteBy${entity}Id(String id){
+##        ${table.entityPath}Mapper.deleteById(id);
+##        return true;
+##    }
+##    /**
+##    * 批量删除
+##    */
+##    @Override
+##    @Transactional
+##    public boolean batchdelete(List<String> list){
+##      return deleteBatchIds(list);
+##    }
+}
+#end

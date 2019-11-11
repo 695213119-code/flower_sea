@@ -20,6 +20,20 @@ public class BusinessException extends RuntimeException {
         super(message);
     }
 
+    private BusinessException(String code, int httpStatus, String message) {
+        super(message);
+        this.httpStatus = httpStatus;
+    }
+
+    BusinessException(HttpStatus httpStatus) {
+        super("系统异常");
+        this.httpStatus = httpStatus.value();
+    }
+
+    BusinessException(HttpStatus httpStatus, String message) {
+        this(httpStatus.name(), httpStatus.value(), message);
+    }
+
     public BusinessException(String message, HttpStatus httpStatus) {
         super(message);
         this.httpStatus = httpStatus.value();

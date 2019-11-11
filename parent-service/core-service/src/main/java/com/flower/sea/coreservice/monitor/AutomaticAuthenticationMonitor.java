@@ -3,12 +3,12 @@ package com.flower.sea.coreservice.monitor;
 import cn.hutool.core.collection.CollUtil;
 import com.flower.sea.commonservice.annotation.ApiMenuAnnotation;
 import com.flower.sea.commonservice.annotation.AuthorityAnnotation;
-import com.flower.sea.commonservice.bo.AuthorityApiBO;
-import com.flower.sea.commonservice.bo.AuthorityAppBO;
-import com.flower.sea.commonservice.bo.AuthorityMenuBO;
 import com.flower.sea.commonservice.enumeration.middlewareEnumeration;
 import com.flower.sea.commonservice.utils.ClassUtils;
 import com.flower.sea.commonservice.utils.JsonUtils;
+import com.flower.sea.entityservice.upload.api.AuthorityApi;
+import com.flower.sea.entityservice.upload.api.AuthorityApp;
+import com.flower.sea.entityservice.upload.api.AuthorityMenu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,24 +50,24 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
     @Override
     public void run(String... args) {
         log.info("----开始上传权限api----");
-        AuthorityAppBO authorityApp = new AuthorityAppBO();
+        AuthorityApp authorityApp = new AuthorityApp();
         authorityApp.setAppName(appName);
         authorityApp.setAppExplain(appExplain);
-        List<AuthorityMenuBO> authorityMenuList = new ArrayList<>();
+        List<AuthorityMenu> authorityMenuList = new ArrayList<>();
         Set<Class<?>> classSet = ClassUtils.getClassSet("com.flower.sea.coreservice.controller");
         if (CollUtil.isNotEmpty(classSet)) {
             for (Class set : classSet) {
                 if (null != AnnotationUtils.findAnnotation(set, ApiMenuAnnotation.class)) {
                     ApiMenuAnnotation setAnnotation = (ApiMenuAnnotation) set.getAnnotation(ApiMenuAnnotation.class);
                     RequestMapping requestMappingAnnotation = (RequestMapping) set.getAnnotation(RequestMapping.class);
-                    AuthorityMenuBO authorityMenu = new AuthorityMenuBO();
+                    AuthorityMenu authorityMenu = new AuthorityMenu();
                     authorityMenu.setClassName(set.getTypeName());
                     authorityMenu.setMenuName(setAnnotation.name());
                     Method[] methods = set.getMethods();
-                    List<AuthorityApiBO> authorityApiList = new ArrayList<>();
+                    List<AuthorityApi> authorityApiList = new ArrayList<>();
                     for (Method method : methods) {
                         if (null != AnnotationUtils.findAnnotation(method, AuthorityAnnotation.class)) {
-                            AuthorityApiBO api = getMethodUrl(method, requestMappingAnnotation.value()[0]);
+                            AuthorityApi api = getMethodUrl(method, requestMappingAnnotation.value()[0]);
                             authorityApiList.add(api);
                         }
                     }
@@ -86,10 +86,10 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
      *
      * @param method method
      * @param url    当前controller的路径
-     * @return AuthorityApiBO
+     * @return AuthorityApi
      */
-    private AuthorityApiBO getMethodUrl(Method method, String url) {
-        AuthorityApiBO authorityApiBO = new AuthorityApiBO();
+    private AuthorityApi getMethodUrl(Method method, String url) {
+        AuthorityApi authorityApiBO = new AuthorityApi();
         StringBuilder sb = new StringBuilder();
         sb.append(url);
         PostMapping postMapping = method.getAnnotation(PostMapping.class);

@@ -1,0 +1,39 @@
+package ${package.Mapper};
+
+import ${package.Entity}.${entity};
+import ${superMapperClassPackage};
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import org.springframework.stereotype.Repository;
+
+/**
+ * <p>
+ * $!{table.comment} Mapper 接口
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Repository
+#if(${kotlin})
+interface ${table.mapperName} : ${superMapperClass}<${entity}>
+#else
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+##   /**
+##   * 分页查询列表
+##   * @param page
+##   * @return
+##   */
+##   List<${entity}> findList(Pagination page);
+##
+##
+##   /**
+##   * 根据id查询
+##   */
+##    ${entity} findById(@Param("id") String id);
+##
+##    /**
+##    * 根据ID删除
+##    */
+##    void deleteById(@Param("id") String id);
+}
+#end

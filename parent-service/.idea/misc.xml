@@ -10,6 +10,9 @@
         <option value="$PROJECT_DIR$/auth-service/pom.xml" />
         <option value="$PROJECT_DIR$/common-service/pom.xml" />
         <option value="$PROJECT_DIR$/core-service/pom.xml" />
+        <option value="$PROJECT_DIR$/data-base-service/pom.xml" />
+        <option value="$PROJECT_DIR$/entity-service/pom.xml" />
+        <option value="$PROJECT_DIR$/generate-service/pom.xml" />
       </list>
     </option>
   </component>

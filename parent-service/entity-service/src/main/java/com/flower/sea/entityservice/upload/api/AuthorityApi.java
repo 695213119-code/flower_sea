@@ -1,4 +1,4 @@
-package com.flower.sea.commonservice.bo;
+package com.flower.sea.entityservice.upload.api;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import lombok.Data;
  * @serial 2019/11/8
  */
 @Data
-public class AuthorityApiBO {
+public class AuthorityApi {
 
     /**
      * api路径

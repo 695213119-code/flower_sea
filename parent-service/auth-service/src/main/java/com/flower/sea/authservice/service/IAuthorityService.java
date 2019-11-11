@@ -1,8 +1,11 @@
 package com.flower.sea.authservice.service;
 
 import com.flower.sea.commonservice.recurrence.ResponseObject;
+import com.flower.sea.entityservice.upload.api.AuthorityApp;
 
 /**
+ * 权限
+ *
  * @author zhangLei
  * @serial 2019/11/6
  */
@@ -25,4 +28,13 @@ public interface IAuthorityService {
      * @return ResponseObject
      */
     ResponseObject analysisUserToken(String userToken);
+
+
+    /**
+     * 上传权限API
+     *
+     * @param authorityApp 权限api数据
+     * @return ResponseObject
+     */
+    Integer uploadAuthApi(AuthorityApp authorityApp);
 }

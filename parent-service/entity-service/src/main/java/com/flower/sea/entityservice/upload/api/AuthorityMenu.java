@@ -1,4 +1,4 @@
-package com.flower.sea.commonservice.bo;
+package com.flower.sea.entityservice.upload.api;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @serial 2019/11/8
  */
 @Data
-public class AuthorityMenuBO {
+public class AuthorityMenu {
 
     /**
      * 菜单名称
@@ -26,5 +26,5 @@ public class AuthorityMenuBO {
     /**
      * api 集合
      */
-    private List<AuthorityApiBO> authorityApi;
+    private List<AuthorityApi> authorityApi;
 }

@@ -1,0 +1,48 @@
+package ${package.Service};
+
+
+##import com.junteng.frameworkbaseclient.result.PageResult;
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+import com.baomidou.mybatisplus.service.IService;
+##import java.util.List;
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.serviceName} : ${superServiceClass}<${entity}>
+#else
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+##    /**
+##     * 自定义分页
+##     * @param pageNum
+##     * @param pageSize
+##     * @return
+##     */
+##    PageResult<List<${entity}>> findList(Integer pageNum, Integer pageSize);
+##
+##    /**
+##    * 根据id查询
+##    */
+##    ${entity} find${entity}ById(String id);
+##
+##    /**
+##    * 批量新增
+##    */
+##    boolean insert(List<${entity}> list);
+##    /**
+##    * 根据ID删除
+##    */
+##    boolean deleteBy${entity}Id(String id);
+##    /**
+##    * 批量删除
+##    */
+##    boolean batchdelete(List<String> list);
+
+}
+#end

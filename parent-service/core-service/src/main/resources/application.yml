@@ -2,6 +2,12 @@ app:
   explain: 核心服务,负责提供系统的核心接口
 
 spring:
+  datasource:
+    url: jdbc:mysql://49.232.143.52:33306/flower_sea_common_db?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
   rabbitmq:
     host: 49.232.143.52
     port: 5672
