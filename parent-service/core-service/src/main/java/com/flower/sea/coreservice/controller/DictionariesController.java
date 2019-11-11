@@ -22,9 +22,16 @@ public class DictionariesController {
 
 
     @PostMapping("/test")
-    @ApiOperation("测试接口是否可以被检查到")
+    @ApiOperation("test")
     @AuthorityAnnotation
     public String test() {
+        return "";
+    }
+
+
+    @PostMapping("/ceshi")
+    @ApiOperation("ceshi")
+    public String ceshi() {
         return "";
     }
 }

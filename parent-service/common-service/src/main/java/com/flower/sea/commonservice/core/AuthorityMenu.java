@@ -1,7 +1,9 @@
 package com.flower.sea.commonservice.core;
 
+import cn.hutool.core.collection.CollUtil;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +32,11 @@ public class AuthorityMenu {
 
 
     public void addApi(AuthorityApi authApi) {
-        authorityApi.add(authApi);
+        if (CollUtil.isNotEmpty(authorityApi)) {
+            authorityApi.add(authApi);
+        } else {
+            authorityApi = new ArrayList<>();
+            authorityApi.add(authApi);
+        }
     }
 }

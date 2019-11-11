@@ -37,6 +37,11 @@
             <artifactId>data-base-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.flower.sea</groupId>
+            <artifactId>api-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
 
         <!-- eureka客户端-->
@@ -50,6 +55,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
