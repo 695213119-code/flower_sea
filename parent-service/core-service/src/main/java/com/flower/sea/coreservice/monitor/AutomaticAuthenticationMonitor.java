@@ -14,6 +14,7 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ import java.util.Set;
 public class AutomaticAuthenticationMonitor implements CommandLineRunner {
 
     private final AmqpTemplate rabbitmqTemplate;
+    private final ApplicationContext applicationContext;
 
     @Value("${spring.application.name}")
     private String appName;
@@ -43,8 +45,9 @@ public class AutomaticAuthenticationMonitor implements CommandLineRunner {
 
 
     @Autowired
-    public AutomaticAuthenticationMonitor(AmqpTemplate rabbitmqTemplate) {
+    public AutomaticAuthenticationMonitor(AmqpTemplate rabbitmqTemplate, ApplicationContext applicationContext) {
         this.rabbitmqTemplate = rabbitmqTemplate;
+        this.applicationContext = applicationContext;
     }
 
     @Override

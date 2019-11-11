@@ -27,4 +27,9 @@ public class AuthorityMenu {
      * api 集合
      */
     private List<AuthorityApi> authorityApi;
+
+
+    public void addApi(AuthorityApi authApi) {
+        authorityApi.add(authApi);
+    }
 }

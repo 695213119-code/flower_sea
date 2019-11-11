@@ -38,6 +38,7 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+
         <!-- eureka客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
