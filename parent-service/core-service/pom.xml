@@ -16,9 +16,6 @@
     <name>core-service</name>
     <description>核心服务</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <!--基础依赖-->
@@ -39,10 +36,9 @@
         </dependency>
         <dependency>
             <groupId>com.flower.sea</groupId>
-            <artifactId>api-service</artifactId>
+            <artifactId>starter-custom-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
 
         <!-- eureka客户端-->
         <dependency>

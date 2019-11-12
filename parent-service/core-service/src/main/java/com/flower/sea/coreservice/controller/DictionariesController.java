@@ -1,7 +1,8 @@
 package com.flower.sea.coreservice.controller;
 
-import com.flower.sea.commonservice.annotation.ApiMenuAnnotation;
-import com.flower.sea.commonservice.annotation.AuthorityAnnotation;
+
+import com.flower.sea.startercustomapi.annotation.ApiMenuAnnotation;
+import com.flower.sea.startercustomapi.annotation.AuthorityAnnotation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;

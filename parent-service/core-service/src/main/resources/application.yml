@@ -1,6 +1,3 @@
-app:
-  explain: 核心服务,负责提供系统的核心接口
-
 spring:
   datasource:
     url: jdbc:mysql://49.232.143.52:33306/flower_sea_common_db?characterEncoding=utf8&useSSL=false
@@ -13,3 +10,7 @@ spring:
     port: 5672
     username: guest
     password: guest
+
+auth:
+  automatic:
+    upload: true

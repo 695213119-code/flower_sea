@@ -4,10 +4,28 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
+    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="完善权限api自动提交的代码编写">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/monitor/ApiAuthScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/monitor/ApiAuthScanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/annotation/ApiMenuAnnotation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/annotation/AuthorityAnnotation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/CoreServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/CoreServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/controller/DictionariesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/controller/DictionariesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/monitor/ApiAuthScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/core-service/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/generate-service/target/" />
+    <ignored path="$PROJECT_DIR$/eureka-service/target/" />
+    <ignored path="$PROJECT_DIR$/data-base-service/target/" />
+    <ignored path="$PROJECT_DIR$/api-service/target/" />
+    <ignored path="$PROJECT_DIR$/gateway-service/target/" />
+    <ignored path="$PROJECT_DIR$/entity-service/target/" />
+    <ignored path="$PROJECT_DIR$/common-service/target/" />
+    <ignored path="$PROJECT_DIR$/auth-service/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +34,28 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core-service/src/main/resources/bootstrap.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core-service/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -35,6 +75,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/monitor/ApiAuthScanner.java" />
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/internal/ApiAuthScanner.java" />
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/internal/ApiAuthDataSender.java" />
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/config/AuthConfiguration.java" />
+        <option value="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/constant/ApplicationConstant.java" />
+        <option value="$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/internal/ApiAuthScanner.java" />
+        <option value="$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/config/AuthConfiguration.java" />
+        <option value="$PROJECT_DIR$/api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/constant/ApplicationConstant.java" />
+        <option value="$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/internal/ApiAuthDataSender.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/utiils/SpringContextUtils.java" />
+        <option value="$PROJECT_DIR$/core-service/pom.xml" />
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/controller/DictionariesController.java" />
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/CoreServiceApplication.java" />
+        <option value="$PROJECT_DIR$/core-service/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/core-service/src/main/resources/bootstrap.yml" />
+      </list>
+    </option>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -43,8 +106,50 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="core-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="core-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-322" />
+    <option name="y" value="152" />
+    <option name="width" value="1433" />
+    <option name="height" value="814" />
+  </component>
   <component name="ProjectId" id="1TKjZz93OrcQe5JcyxPaJOswEYp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="parent-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="parent-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -53,8 +158,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../el-lms-aggre-user-server" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8 (2)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core-service/src/main/resources/jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,25 +168,26 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.flower.sea.coreservice.utiils" />
       <recent name="com.flower.sea.generateservice" />
       <recent name="com.flower.sea.coreservice" />
       <recent name="com.floewer.sea.coreservice.monitor" />
       <recent name="com.flower.sea.authservice" />
-      <recent name="com.flower.sea.gatewayservice" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\zl\flower_sea\parent-service\core-service\src\main\resources\jar" />
       <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping\auth" />
       <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\java\com\flower\sea\authservice\auth\mapper" />
       <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\java\com\flower\sea\authservice\auth\service\impl" />
       <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\java\com\flower\sea\authservice\auth\service" />
-      <recent name="E:\zl\flower_sea\parent-service\entity-service\src\main\java\com\flower\sea\entityservice\auth" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -248,8 +354,8 @@
       <item itemvalue="Spring Boot.DataBaseServiceApplication" />
       <item itemvalue="Spring Boot.EntityServiceApplication" />
       <item itemvalue="Spring Boot.GenerateServiceApplication" />
-      <item itemvalue="Spring Boot.CoreServiceApplication" />
       <item itemvalue="Spring Boot.ApiServiceApplication" />
+      <item itemvalue="Spring Boot.CoreServiceApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -421,6 +527,83 @@
     <option name="localTasksCounter" value="20" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="19849000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info id="Designer" order="5" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.24856733" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.44952893" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50143266" side_tool="true" weight="0.32032302" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32974428" />
+      <window_info anchor="bottom" id="Java Enterprise" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32974428" />
+      <window_info anchor="bottom" id="Message" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.32974428" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.4125874" />
+      <window_info active="true" anchor="bottom" id="Debug" order="11" sideWeight="0.49856734" visible="true" weight="0.3781965" />
+      <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="14" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Bean Validation" order="5" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.30014327" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info id="Designer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.23889293" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.44952893" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50143266" side_tool="true" weight="0.32032302" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32974428" />
+      <window_info anchor="bottom" id="Java Enterprise" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32974428" />
+      <window_info anchor="bottom" id="Message" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.32974428" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.4125874" />
+      <window_info anchor="bottom" id="Debug" order="11" sideWeight="0.49856734" visible="true" weight="0.21313868" />
+      <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="14" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Bean Validation" order="5" />
+      <window_info anchor="right" id="Maven" order="6" visible="true" weight="0.28186452" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+    </layout-to-restore>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -430,6 +613,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -463,11 +652,317 @@
     <MESSAGE value="完善权限api自动提交的代码编写" />
     <option name="LAST_COMMIT_MESSAGE" value="完善权限api自动提交的代码编写" />
   </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="methodEntryValue" />
-      </configuration>
-    </watches-manager>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="341" column="18" selection-start-line="341" selection-start-column="18" selection-end-line="341" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/core/AuthorityApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/core/AuthorityApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/core/AuthorityMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/constant/ApplicationConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-service/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/config/AuthConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/internal/ApiAuthDataSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-service/src/main/java/com/flower/sea/apiservice/internal/ApiAuthScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-base-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.pom">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/annotation/ApiMenuAnnotation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/annotation/AuthorityAnnotation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/vo/AuthorityApi.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/vo/AuthorityApp.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/vo/AuthorityMenu.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/ApiSdkApplication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding>
+            <element signature="e#466#467#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/config/AuthConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding>
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#554#555#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/internal/ApiAuthDataSender.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/internal/ApiAuthScanner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/api/api-sdk/1.0/api-sdk-1.0.jar!/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gateway-service/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/custom/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/ApiSdkApplication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/custom/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/annotation/ApiMenuAnnotation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/custom/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/annotation/AuthorityAnnotation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/custom/api-sdk/1.0/api-sdk-1.0.jar!/com/flower/sea/apisdk/config/AuthConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/flower/sea/api-sdk/0.0.1-SNAPSHOT/api-sdk-0.0.1-SNAPSHOT.jar!/META-INF/maven/com.flower.sea/api-sdk/pom.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/flower/sea/api-sdk/0.0.1-SNAPSHOT/api-sdk-0.0.1-SNAPSHOT.jar!/META-INF/maven/com.flower.sea/api-sdk/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-350">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/flower/sea/api-sdk/0.0.1-SNAPSHOT/api-sdk-0.0.1-SNAPSHOT.jar!/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/flower/sea/api-sdk/0.0.1-SNAPSHOT/api-sdk-0.0.1-SNAPSHOT.jar!/com/flower/sea/apisdk/internal/ApiAuthScanner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="31" column="55" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/controller/DictionariesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/monitor/AuthorityMessageMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="18" column="46" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="46" />
+          <folding>
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="48" selection-start-line="48" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.8/jackson-datatype-jsr310-2.9.8-sources.jar!/com/fasterxml/jackson/datatype/jsr310/JavaTimeModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="36" column="45" lean-forward="true" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/utiils/SpringContextUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/flower/sea/coreservice/CoreServiceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
