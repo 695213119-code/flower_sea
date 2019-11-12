@@ -1,4 +1,4 @@
-package com.flower.sea.authservice.pojo.bo;
+package com.flower.sea.authservice.pojo.bo.token;
 
 import lombok.Data;
 

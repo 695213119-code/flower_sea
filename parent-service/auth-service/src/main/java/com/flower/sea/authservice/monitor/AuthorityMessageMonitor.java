@@ -2,7 +2,7 @@ package com.flower.sea.authservice.monitor;
 
 import com.flower.sea.authservice.service.IAuthorityService;
 import com.flower.sea.commonservice.utils.JsonUtils;
-import com.flower.sea.commonservice.core.AuthorityApp;
+import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

@@ -1,7 +1,7 @@
 package com.flower.sea.authservice.utils;
 
 import cn.hutool.core.collection.CollUtil;
-import com.flower.sea.authservice.pojo.bo.JwtTokenBO;
+import com.flower.sea.authservice.pojo.bo.token.JwtTokenBO;
 import com.flower.sea.commonservice.enumeration.SystemEnumeration;
 import com.flower.sea.commonservice.exception.BusinessException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;

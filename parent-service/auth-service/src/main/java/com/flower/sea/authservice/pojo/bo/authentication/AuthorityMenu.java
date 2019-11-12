@@ -1,4 +1,4 @@
-package com.flower.sea.commonservice.core;
+package com.flower.sea.authservice.pojo.bo.authentication;
 
 import cn.hutool.core.collection.CollUtil;
 import lombok.Data;
