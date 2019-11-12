@@ -30,8 +30,8 @@ public class AuthorityMessageMonitor {
     @RabbitHandler
     public void process(String authenticationQueue) {
         AuthorityApp authorityApp = JsonUtils.json2Object(authenticationQueue, AuthorityApp.class);
-        log.info("-----开始上传权限API配置====>>本次上传的服务为:[" + authorityApp.getAppName() + "]-----");
+        log.info("-----开始上传权限API配置===>>本次上传的服务为:[" + authorityApp.getAppName() + "]");
         Integer count = authorityService.uploadAuthApi(authorityApp);
-        log.info("----权限api配置上传结束,上传的api个数为:[" + count + "个]----");
+        log.info("-----权限api配置上传结束,上传的api个数为:[" + count + "个]");
     }
 }
