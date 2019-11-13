@@ -1,9 +1,9 @@
 server:
-  port: 9001
+  port: 9004
 
 spring:
   application:
-    name: api-gateway
+    name: user-service
 
 eureka:
   instance:
@@ -11,4 +11,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.ip-address}:9000/eureka/
-

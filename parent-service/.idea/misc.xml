@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/data-base-service/pom.xml" />
         <option value="$PROJECT_DIR$/entity-service/pom.xml" />
         <option value="$PROJECT_DIR$/generate-service/pom.xml" />
+        <option value="$PROJECT_DIR$/user-service/pom.xml" />
       </list>
     </option>
   </component>

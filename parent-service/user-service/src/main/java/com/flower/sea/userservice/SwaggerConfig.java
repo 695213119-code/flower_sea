@@ -1,4 +1,4 @@
-package com.flower.sea.coreservice;
+package com.flower.sea.userservice;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -48,8 +48,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("鉴权服务")
-                .description("负责提供项目的鉴权")
+                .title("用户服务")
+                .description("负责提供用户相关的接口")
                 .version("1.0")
                 .build();
     }

@@ -1,15 +1,16 @@
 package com.flower.sea.authservice.controller;
 
+import com.flower.sea.authservice.pojo.bo.verification.Gateway;
 import com.flower.sea.authservice.service.IAuthorityService;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * 鉴权
@@ -40,6 +41,19 @@ public class AuthorityController {
     @ApiOperation(value = "解析用户token")
     public ResponseObject analysisUserToken(@ApiParam(value = "用户token", required = true) @RequestParam String userToken) {
         return authorityService.analysisUserToken(userToken);
+    }
+
+    @PostMapping("/verificationIsToken")
+    @ApiOperation(value = "校验接口是否需要token验证")
+    public ResponseObject verificationIsToken(@ApiParam(value = "验证token参数类", required = true) @Valid @RequestBody Gateway gateway,
+                                              BindingResult bindingResult) {
+        return authorityService.verificationIsToken(gateway, bindingResult);
+    }
+
+    @GetMapping("/verificationTokenIsCorrect")
+    @ApiOperation(value = "校验用户token是否合法")
+    public ResponseObject verificationTokenIsCorrect(@ApiParam(value = "用户token", required = true) @RequestParam String userToken) {
+        return authorityService.verificationTokenIsCorrect(userToken);
     }
 
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flower.sea.authservice.mapper.AuthorityMapper">
+
+
+    <select id="findApi" resultType="com.flower.sea.authservice.pojo.bo.verification.ApiBO">
+        SELECT
+        api.id as id,
+        api.url as url,
+        api.`status` as status
+        FROM
+        `flower_sea_app` AS app
+        INNER JOIN flower_sea_menu AS menu ON menu.app_id = app.id
+        INNER JOIN flower_sea_api AS api ON api.menu_id = menu.id
+        <where>
+            AND app.app_name = #{gateway.serviceName}
+            AND api.url = #{gateway.url}
+        </where>
+    </select>
+
+
+
+</mapper>

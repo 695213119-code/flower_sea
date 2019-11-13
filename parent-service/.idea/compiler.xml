@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-service" />
         <module name="gateway-service" />
+        <module name="user-service" />
         <module name="entity-service" />
         <module name="generate-service" />
         <module name="common-service" />
@@ -35,6 +36,7 @@
       <module name="gateway-service" options="-parameters" />
       <module name="generate-service" options="-parameters" />
       <module name="middleware-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
     </option>
   </component>
 </project>

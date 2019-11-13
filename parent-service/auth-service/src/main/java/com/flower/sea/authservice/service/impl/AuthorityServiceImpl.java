@@ -1,11 +1,20 @@
 package com.flower.sea.authservice.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.flower.sea.authservice.auth.service.IApiService;
 import com.flower.sea.authservice.auth.service.IAppService;
 import com.flower.sea.authservice.auth.service.IMenuService;
+import com.flower.sea.authservice.constant.AuthConstant;
+import com.flower.sea.authservice.mapper.AuthorityMapper;
+import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApi;
+import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApp;
+import com.flower.sea.authservice.pojo.bo.authentication.AuthorityMenu;
 import com.flower.sea.authservice.pojo.bo.token.JwtTokenBO;
+import com.flower.sea.authservice.pojo.bo.verification.ApiBO;
+import com.flower.sea.authservice.pojo.bo.verification.Gateway;
+import com.flower.sea.authservice.pojo.dto.out.AuthOut;
 import com.flower.sea.authservice.pojo.dto.out.JwtTokenOut;
 import com.flower.sea.authservice.service.IAuthorityService;
 import com.flower.sea.authservice.utils.JwtUtils;
@@ -15,14 +24,12 @@ import com.flower.sea.commonservice.utils.IdUtils;
 import com.flower.sea.entityservice.auth.Api;
 import com.flower.sea.entityservice.auth.App;
 import com.flower.sea.entityservice.auth.Menu;
-import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApi;
-import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApp;
-import com.flower.sea.authservice.pojo.bo.authentication.AuthorityMenu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -43,12 +50,14 @@ public class AuthorityServiceImpl implements IAuthorityService {
     private final IAppService appService;
     private final IMenuService menuService;
     private final IApiService apiService;
+    private final AuthorityMapper authorityMapper;
 
     @Autowired
-    public AuthorityServiceImpl(IAppService appService, IMenuService menuService, IApiService apiService) {
+    public AuthorityServiceImpl(IAppService appService, IMenuService menuService, IApiService apiService, AuthorityMapper authorityMapper) {
         this.appService = appService;
         this.menuService = menuService;
         this.apiService = apiService;
+        this.authorityMapper = authorityMapper;
     }
 
     @Override
@@ -80,6 +89,29 @@ public class AuthorityServiceImpl implements IAuthorityService {
         return count;
     }
 
+    @Override
+    public ResponseObject verificationIsToken(Gateway gateway, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseObject.failure(HttpStatus.BAD_REQUEST.value(), bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+        ApiBO api = authorityMapper.findApi(gateway);
+        if (ObjectUtil.isNull(api)) {
+            return ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "无效的请求");
+        }
+        AuthOut authOut = new AuthOut();
+        BeanUtils.copyProperties(api, authOut);
+        return ResponseObject.success(authOut);
+    }
+
+    @Override
+    public ResponseObject verificationTokenIsCorrect(String userToken) {
+        ResponseObject<JwtTokenBO> jwtTokenResponseObject = JwtUtils.analysisToken(userToken);
+        if (HttpStatus.OK.value() != jwtTokenResponseObject.getCode()) {
+            return ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "无效的Token");
+        }
+        return ResponseObject.success();
+    }
+
     /**
      * 刷新数据
      *
@@ -106,6 +138,7 @@ public class AuthorityServiceImpl implements IAuthorityService {
                         BeanUtils.copyProperties(authorityApi, api);
                         api.setId(IdUtils.generateId());
                         api.setMenuId(menuId);
+                        api.setStatus(authorityApi.isToken() ? AuthConstant.AUTH_NEED_TOKEN : AuthConstant.AUTH_NOT_NEED_TOKEN);
                         apisInsertList.add(api);
                         count++;
                     }

@@ -29,6 +29,7 @@
         <module>generate-service</module>
         <module>auth-service</module>
         <module>core-service</module>
+        <module>user-service</module>
     </modules>
 
     <!--公共/基础的依赖版本配置-->

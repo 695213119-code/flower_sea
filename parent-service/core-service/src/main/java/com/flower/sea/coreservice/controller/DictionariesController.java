@@ -24,15 +24,16 @@ public class DictionariesController {
 
     @PostMapping("/test")
     @ApiOperation("test")
-    @AuthorityAnnotation
+    @AuthorityAnnotation(isToken = true)
     public String test() {
-        return "";
+        return "根据正确的token访问到我啦";
     }
 
 
     @PostMapping("/ceshi")
     @ApiOperation("ceshi")
+    @AuthorityAnnotation(isToken = false)
     public String ceshi() {
-        return "";
+        return "不需要token也能访问到我啦";
     }
 }

@@ -111,7 +111,7 @@ public class JwtUtils {
         } catch (ParseException | JOSEException e) {
             e.printStackTrace();
             log.error("校验Token失败,异常信息:{}", e.getMessage());
-            throw new BusinessException(SystemEnumeration.BUSINESS_EXCEPTION.getMessage());
+            return ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "校验Token失败");
         }
         if (CollUtil.isEmpty(valid)) {
             log.error("解析到的JwtToken数据为空,数据为:{}", valid);

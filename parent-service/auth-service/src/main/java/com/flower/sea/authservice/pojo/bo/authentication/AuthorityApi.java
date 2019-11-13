@@ -20,4 +20,9 @@ public class AuthorityApi {
      * 请求方式
      */
     private String method;
+
+    /**
+     * 是否需要token鉴权
+     */
+    private boolean isToken;
 }

@@ -41,7 +41,7 @@ public class Api extends Model<Api> {
     @ApiModelProperty(value = "请求类型")
     private String method;
 
-    @ApiModelProperty(value = "状态 1-正常 2-禁用")
+    @ApiModelProperty(value = "状态 1-需要token验证 2-不需要token验证")
     private Integer status;
 
     @ApiModelProperty(value = "创建者")

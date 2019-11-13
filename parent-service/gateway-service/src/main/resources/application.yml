@@ -1,0 +1,19 @@
+zuul:
+  routes:
+    auth-service: /apigateway/auth-service/**
+    core-service: /apigateway/core-service/**
+    user-service: /apigateway/user-service/**
+  ignored-patterns: /*-service/**
+  sensitive-headers:
+
+#配置超时时间,
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
