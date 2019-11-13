@@ -2,10 +2,10 @@ package com.flower.sea.gatewayservice.filter;
 
 
 import cn.hutool.core.util.ObjectUtil;
+import com.flower.sea.commonservice.constant.AuthorityConstant;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.JsonUtils;
 import com.flower.sea.gatewayservice.call.auth.IAuthCall;
-import com.flower.sea.gatewayservice.constant.AuthConstant;
 import com.flower.sea.gatewayservice.utils.GatewayUtils;
 import com.flower.sea.gatewayservice.vo.Gateway;
 import com.netflix.zuul.ZuulFilter;
@@ -74,8 +74,7 @@ public class AuthFilter extends ZuulFilter {
             return null;
         }
         LinkedHashMap data = (LinkedHashMap) verificationIsToken.getData();
-        //此接口需要token验证
-        if (AuthConstant.AUTHENTICATION_VERIFICATION_NEED_TOKEN.equals(data.get(AuthConstant.AUTHENTICATION_VERIFICATION_RETURN_KEY))) {
+        if (AuthorityConstant.AUTHENTICATION_VERIFICATION_NEED_TOKEN.equals(data.get(AuthorityConstant.AUTHENTICATION_VERIFICATION_RESULT_KEY))) {
             //未获取到token,验证失败
             String token = getToken(request);
             if (StringUtils.isEmpty(token)) {
@@ -100,7 +99,7 @@ public class AuthFilter extends ZuulFilter {
      * @return String
      */
     private String getToken(HttpServletRequest request) {
-        String accessToken = AuthConstant.ACCESS_TOKEN;
+        String accessToken = AuthorityConstant.AUTHORITY_ACCESS_TOKEN;
         String token = request.getHeader(accessToken);
         if (StringUtils.isEmpty(token)) {
             token = request.getParameter(accessToken);

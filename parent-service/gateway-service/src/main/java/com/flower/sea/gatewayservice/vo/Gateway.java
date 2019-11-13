@@ -3,6 +3,8 @@ package com.flower.sea.gatewayservice.vo;
 import lombok.Data;
 
 /**
+ * 验证参数类
+ *
  * @author zhangLei
  * @serial 2019/11/13
  */

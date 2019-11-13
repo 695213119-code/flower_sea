@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * 验证token的参数类
+ * 验证token的BO类
  *
  * @author zhangLei
  * @serial 2019/11/13

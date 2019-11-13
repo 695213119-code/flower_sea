@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.flower.sea.authservice.auth.service.IApiService;
 import com.flower.sea.authservice.auth.service.IAppService;
 import com.flower.sea.authservice.auth.service.IMenuService;
-import com.flower.sea.authservice.constant.AuthConstant;
 import com.flower.sea.authservice.mapper.AuthorityMapper;
 import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApi;
 import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApp;
@@ -18,6 +17,7 @@ import com.flower.sea.authservice.pojo.dto.out.AuthOut;
 import com.flower.sea.authservice.pojo.dto.out.JwtTokenOut;
 import com.flower.sea.authservice.service.IAuthorityService;
 import com.flower.sea.authservice.utils.JwtUtils;
+import com.flower.sea.commonservice.constant.AuthorityConstant;
 import com.flower.sea.commonservice.exception.DbOperationException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.IdUtils;
@@ -138,7 +138,7 @@ public class AuthorityServiceImpl implements IAuthorityService {
                         BeanUtils.copyProperties(authorityApi, api);
                         api.setId(IdUtils.generateId());
                         api.setMenuId(menuId);
-                        api.setStatus(authorityApi.isToken() ? AuthConstant.AUTH_NEED_TOKEN : AuthConstant.AUTH_NOT_NEED_TOKEN);
+                        api.setStatus(authorityApi.isToken() ? AuthorityConstant.AUTHENTICATION_VERIFICATION_NEED_TOKEN : AuthorityConstant.AUTHENTICATION_VERIFICATION_NOT_NEED_TOKEN);
                         apisInsertList.add(api);
                         count++;
                     }
