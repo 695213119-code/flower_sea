@@ -90,7 +90,7 @@ public class AuthFilter extends ZuulFilter {
         Gateway gateway = GatewayUtils.getGateway(requestUrl);
         ResponseObject verificationIsToken = authService.verificationIsToken(gateway);
         if (ObjectUtil.isNull(verificationIsToken) || HttpStatus.OK.value() != verificationIsToken.getCode()) {
-            failureRequest(verificationIsToken);
+            failureRequest(ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "无效的请求"));
             return null;
         }
         LinkedHashMap data = (LinkedHashMap) verificationIsToken.getData();
