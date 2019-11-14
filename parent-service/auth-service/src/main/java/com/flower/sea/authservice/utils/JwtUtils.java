@@ -109,7 +109,6 @@ public class JwtUtils {
         try {
             valid = valid(token);
         } catch (ParseException | JOSEException e) {
-            e.printStackTrace();
             log.error("校验Token失败,异常信息:{}", e.getMessage());
             return ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "校验Token失败");
         }
