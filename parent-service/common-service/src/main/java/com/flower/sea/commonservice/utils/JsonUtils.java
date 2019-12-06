@@ -7,9 +7,11 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +21,7 @@ import java.util.Map;
  * @author zhangLei
  * @serial 2019/11/6
  */
+@Slf4j
 public class JsonUtils {
 
     private static final ObjectMapper OBJECT_MAPPER = createObjectMapper();
@@ -39,6 +42,12 @@ public class JsonUtils {
     }
 
 
+    /**
+     * object---->>json
+     *
+     * @param o 对象
+     * @return string
+     */
     public static String object2Json(Object o) {
         StringWriter sw = new StringWriter();
         JsonGenerator gen = null;
@@ -58,6 +67,29 @@ public class JsonUtils {
         }
         return sw.toString();
     }
+
+
+    /**
+     * json---->>map
+     *
+     * @param json json字符串
+     * @return Map
+     */
+    public static Map jsonToMap(String json) {
+        Map map = new HashMap<>(8);
+        try {
+            map = OBJECT_MAPPER.readValue(
+                    json, Map.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.error("Json转Map失败,原因:{}", e.getMessage());
+        }
+        return map;
+    }
+
+
+
+
 
     public static Map<String, Object> object2Map(Object o) {
         return OBJECT_MAPPER.convertValue(o, Map.class);
@@ -89,7 +121,6 @@ public class JsonUtils {
         } catch (IOException e) {
             throw new RuntimeException("将 Json 转换为数组时异常,数据是:" + json + "，clazz=" + clazz, e);
         }
-
     }
 
     public static <T> T node2Object(JsonNode jsonNode, Class<T> clazz) {

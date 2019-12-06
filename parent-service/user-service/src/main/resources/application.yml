@@ -11,6 +11,12 @@ spring:
     username: guest
     password: guest
 
+#----------------------权限的自动上传---------------------
 auth:
   automatic:
     upload: true
+
+#----------------------微信的appId和appSecret---------------------
+wechat:
+  appId: wxe74221283b6986b2
+  appSecret: 69b35abc591ecd7ac4160376f6ed998e
