@@ -21,12 +21,15 @@ public class UserLoginDTO {
     @ApiModelProperty("登录方式 " +
             "1-账号密码登录 " +
             "2-短信验证码登录 " +
-            "3-微信小程序的Code登录,必传参数[wechatCode]")
+            "3-微信小程序的Code登录,必传参数[wechatCode或者openId]")
     @NotBlank(message = "登录方式不能为空")
     private Integer loginType;
 
     @ApiModelProperty("微信的Code")
     private String wechatCode;
+
+    @ApiModelProperty("微信的openId")
+    private String openId;
 
     @ApiModelProperty("手机号/账号")
     private String phone;

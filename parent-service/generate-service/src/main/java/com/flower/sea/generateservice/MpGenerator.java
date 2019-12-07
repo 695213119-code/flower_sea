@@ -40,7 +40,7 @@ public class MpGenerator {
                 MpGenerator.getDataSourceConfig(
                         "49.232.143.52",
                         "33306",
-                        "flower_sea_auth_db",
+                        "flower_sea_user_db",
                         "root",
                         "123456"
                 ),
@@ -49,11 +49,11 @@ public class MpGenerator {
                         new String[]{"flower_sea_"},
                         null,
                         //设置需要生成代码的表
-                        new String[]{"flower_sea_menu","flower_sea_app"}
+                        new String[]{"flower_sea_user", "flower_sea_user_extra", "flower_sea_user_thirdparty"}
                 ),
                 MpGenerator.getPackageConfig(
-                        "com.flower.sea.authservice",
-                        "auth"
+                        "com.flower.sea.userservice",
+                        "user"
                 ),
                 MpGenerator.getTemplateConfig(),
                 MpGenerator.getInjectionConfig(null, null)
@@ -215,7 +215,7 @@ public class MpGenerator {
      */
     private static GlobalConfig getGlobalConfig() {
         //TODO 默认代码输出位置在f盘根目录下
-        String outputDir = "F:";
+        String outputDir = "D:";
         return getGlobalConfig(IdType.ID_WORKER, outputDir, "zhangLei");
     }
 

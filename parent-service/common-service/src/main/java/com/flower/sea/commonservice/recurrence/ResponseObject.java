@@ -73,6 +73,15 @@ public class ResponseObject<T> {
         return responseObject;
     }
 
+
+    public static <S> ResponseObject<S> businessFailure(String message) {
+        ResponseObject<S> responseObject = new ResponseObject<>();
+        responseObject.code = SystemEnumeration.BUSINESS_EXCEPTION.getCode();
+        responseObject.message = message;
+        return responseObject;
+    }
+
+
     @Override
     public String toString() {
         return "RespRecurrence{" +

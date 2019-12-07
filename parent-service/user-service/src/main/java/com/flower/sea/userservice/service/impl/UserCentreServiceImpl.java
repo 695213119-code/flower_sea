@@ -1,20 +1,34 @@
 package com.flower.sea.userservice.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.flower.sea.commonservice.constant.CommonConstant;
 import com.flower.sea.commonservice.enumeration.SystemEnumeration;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
+import com.flower.sea.commonservice.utils.JsonUtils;
+import com.flower.sea.commonservice.utils.RedisUtils;
+import com.flower.sea.entityservice.user.User;
+import com.flower.sea.entityservice.user.UserExtra;
+import com.flower.sea.userservice.call.auth.IAuthCall;
 import com.flower.sea.userservice.dto.in.UserLoginDTO;
+import com.flower.sea.userservice.dto.out.UserLoginResponseDTO;
 import com.flower.sea.userservice.dto.out.WechatCallbackDTO;
 import com.flower.sea.userservice.service.IUserCentreService;
 import com.flower.sea.userservice.strategy.key.UserStrategyKey;
+import com.flower.sea.userservice.strategy.scene.UserScene;
+import com.flower.sea.userservice.user.service.IUserExtraService;
+import com.flower.sea.userservice.user.service.IUserService;
 import com.flower.sea.userservice.utils.WechatUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhangLei
@@ -23,6 +37,21 @@ import java.util.Map;
 @Service
 @Slf4j
 public class UserCentreServiceImpl implements IUserCentreService {
+
+    private final UserScene userScene;
+    private final IUserService userService;
+    private final IUserExtraService userExtraService;
+    private final IAuthCall authCall;
+    private final RedisUtils redisUtils;
+
+    @Autowired
+    public UserCentreServiceImpl(UserScene userScene, IUserService userService, IUserExtraService userExtraService, IAuthCall authCall, RedisUtils redisUtils) {
+        this.userScene = userScene;
+        this.userService = userService;
+        this.userExtraService = userExtraService;
+        this.authCall = authCall;
+        this.redisUtils = redisUtils;
+    }
 
     @Override
     public ResponseObject getWechatOpenId(String wechatCode) {
@@ -45,13 +74,52 @@ public class UserCentreServiceImpl implements IUserCentreService {
             return ResponseObject.failure(SystemEnumeration.BUSINESS_EXCEPTION.getCode(), userStrategyKeyResponseObject.getMessage());
         }
         String userStrategyKey = userStrategyKeyResponseObject.getData();
+        return userScene.login(userLoginDTO, userStrategyKey);
+    }
 
-        return null;
+    @Override
+    public ResponseObject userLoginEncapsulation(Long userId, Integer loginPlatform) {
+
+        User user = userService.selectOne(new EntityWrapper<User>().eq("id", userId)
+                .eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+
+        //判断是否被禁用
+        if (User.UserEnum.USER_DISABLE.getCode().equals(user.getStatus())) {
+            return ResponseObject.businessFailure(User.UserEnum.USER_DISABLE.getMessage());
+        }
+
+        UserLoginResponseDTO userLoginResponseDTO = new UserLoginResponseDTO();
+
+        //生成用户token -根据字典获取
+        final long invalidTime = 183 * 24 * 60 * 60 * 1000L;
+        ResponseObject userTokenResponseObject = authCall.generateUserToken(invalidTime, user.getId());
+        if (null == userTokenResponseObject) {
+            return ResponseObject.businessFailure("获取用户Token失败!");
+        }
+        String userToken = (String) userTokenResponseObject.getData();
+        userLoginResponseDTO.setUserToken(userToken);
+
+        //将token存入redis-删除上一个用户token
+        String userIdLoginPlatformRedisKey = user.getId() + "_" + loginPlatform;
+        String userOldTokenRedis = redisUtils.get(userIdLoginPlatformRedisKey);
+        if (StringUtils.isNotBlank(userOldTokenRedis)) {
+            redisUtils.delete(userOldTokenRedis);
+        }
+        redisUtils.set(userToken, JsonUtils.object2Json(user), invalidTime, TimeUnit.MILLISECONDS);
+        redisUtils.set(userIdLoginPlatformRedisKey, userToken, invalidTime, TimeUnit.MILLISECONDS);
+
+        UserExtra userExtra = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", user.getId()).
+                eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        if (null != userExtra) {
+            BeanUtils.copyProperties(userExtra, userLoginResponseDTO);
+        }
+
+        return ResponseObject.success(userLoginResponseDTO);
     }
 
 
     /**
-     * 获取用户的策略key
+     * 获取用户登录的策略key
      *
      * @param loginPlatform 登录平台
      * @param loginType     登录方式

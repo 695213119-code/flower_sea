@@ -10,6 +10,15 @@ spring:
     port: 5672
     username: guest
     password: guest
+  redis:
+    host: 49.232.143.52
+    port: 6379
+    database: 0
+
+#----------------------mybatis-plus---------------------
+mybatis-plus:
+  mapper-locations: classpath*:mapping/*Mapper.xml
+  type-aliases-package: com.flower.sea.entityservice.user
 
 #----------------------权限的自动上传---------------------
 auth:

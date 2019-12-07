@@ -24,4 +24,14 @@ public interface IUserCentreService {
      * @return ResponseObject
      */
     ResponseObject login(UserLoginDTO userLoginDTO);
+
+    /**
+     * 用户登录公共封装方法
+     *
+     * @param userId        用户id
+     * @param loginPlatform 用户登录平台
+     * @return ResponseObject
+     */
+    ResponseObject userLoginEncapsulation(Long userId, Integer loginPlatform);
+
 }
