@@ -52,10 +52,7 @@ public class UserCentreController {
     @ApiOperation("第三方绑定用户")
     @AuthorityAnnotation(isToken = false)
     public ResponseObject thirdPartyBindingUser(@ApiParam(value = "第三方绑定用户参数DTO", required = true) @RequestBody ThirdPartyBindingUserDTO thirdPartyBindingUserDTO) {
-        if (true) {
-            throw new BusinessException("参数校验不通过!");
-        }
-        return null;
+        return userCentreService.thirdPartyBindingUser(thirdPartyBindingUserDTO);
     }
 
 

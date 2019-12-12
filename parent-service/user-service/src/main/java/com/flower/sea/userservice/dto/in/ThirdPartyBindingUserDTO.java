@@ -24,6 +24,10 @@ public class ThirdPartyBindingUserDTO implements Serializable {
     @NotBlank(message = "第三方的唯一标识不能为空")
     private String unionId;
 
+    @ApiModelProperty(value = "用户手机号")
+    @NotBlank(message = "用户手机号不能为空")
+    private String phone;
+
     @ApiModelProperty(value = "第三方用户性别(0-未知 1-男 2女)")
     private Integer gender;
 

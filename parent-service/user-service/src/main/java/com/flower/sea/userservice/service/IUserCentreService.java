@@ -1,6 +1,7 @@
 package com.flower.sea.userservice.service;
 
 import com.flower.sea.commonservice.recurrence.ResponseObject;
+import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
 import com.flower.sea.userservice.dto.in.UserLoginDTO;
 
 /**
@@ -34,4 +35,11 @@ public interface IUserCentreService {
      */
     ResponseObject userLoginEncapsulation(Long userId, Integer loginPlatform);
 
+    /**
+     * 第三方绑定用户
+     *
+     * @param thirdPartyBindingUserDTO 第三方绑定用户参数DTO
+     * @return ResponseObject
+     */
+    ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO);
 }

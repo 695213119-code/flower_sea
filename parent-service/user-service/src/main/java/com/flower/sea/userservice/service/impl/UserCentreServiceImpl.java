@@ -3,12 +3,17 @@ package com.flower.sea.userservice.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.flower.sea.commonservice.constant.CommonConstant;
 import com.flower.sea.commonservice.enumeration.SystemEnumeration;
+import com.flower.sea.commonservice.exception.DbOperationException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
+import com.flower.sea.commonservice.utils.IdUtils;
 import com.flower.sea.commonservice.utils.JsonUtils;
 import com.flower.sea.commonservice.utils.RedisUtils;
 import com.flower.sea.entityservice.user.User;
 import com.flower.sea.entityservice.user.UserExtra;
+import com.flower.sea.entityservice.user.UserThirdparty;
 import com.flower.sea.userservice.call.auth.IAuthUserFeign;
+import com.flower.sea.userservice.constant.PlatformConstant;
+import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
 import com.flower.sea.userservice.dto.in.UserLoginDTO;
 import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
 import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
@@ -17,6 +22,7 @@ import com.flower.sea.userservice.strategy.key.UserStrategyKey;
 import com.flower.sea.userservice.strategy.scene.UserScene;
 import com.flower.sea.userservice.user.service.IUserExtraService;
 import com.flower.sea.userservice.user.service.IUserService;
+import com.flower.sea.userservice.user.service.IUserThirdpartyService;
 import com.flower.sea.userservice.utils.WechatUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -43,14 +49,16 @@ public class UserCentreServiceImpl implements IUserCentreService {
     private final IUserExtraService userExtraService;
     private final IAuthUserFeign authUserFeign;
     private final RedisUtils redisUtils;
+    private final IUserThirdpartyService thirdpartyService;
 
     @Autowired
-    public UserCentreServiceImpl(UserScene userScene, IUserService userService, IUserExtraService userExtraService, @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign, RedisUtils redisUtils) {
+    public UserCentreServiceImpl(UserScene userScene, IUserService userService, IUserExtraService userExtraService, @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign, RedisUtils redisUtils, IUserThirdpartyService thirdpartyService) {
         this.userScene = userScene;
         this.userService = userService;
         this.userExtraService = userExtraService;
         this.authUserFeign = authUserFeign;
         this.redisUtils = redisUtils;
+        this.thirdpartyService = thirdpartyService;
     }
 
     @Override
@@ -114,6 +122,42 @@ public class UserCentreServiceImpl implements IUserCentreService {
         }
 
         return ResponseObject.success(userLoginResponse);
+    }
+
+    @Override
+    public ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO) {
+
+        UserThirdparty userThirdparty = thirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", thirdPartyBindingUserDTO.getUnionId())
+                .eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        if (null != userThirdparty) {
+            return ResponseObject.businessFailure("该用户已经绑定,请勿重复绑定!");
+        }
+
+        //生成用户
+        Long userId = IdUtils.generateId();
+        User user = new User();
+        user.setId(userId);
+        user.setPhone(thirdPartyBindingUserDTO.getPhone());
+        user.setUserName(thirdPartyBindingUserDTO.getPhone());
+        try {
+            user.insert();
+        } catch (Exception e) {
+            log.error("保存用户数据失败,原因:{}", e.getMessage());
+            throw new DbOperationException("保存用户数据失败");
+        }
+
+        //绑定第三方
+        UserThirdparty userThirdpartyNew = new UserThirdparty();
+        userThirdpartyNew.setUserId(userId);
+        BeanUtils.copyProperties(thirdPartyBindingUserDTO, userThirdpartyNew);
+        try {
+            userThirdpartyNew.insert();
+        } catch (Exception e) {
+            log.error("保存用户第三方数据失败,原因:{}", e.getMessage());
+            throw new DbOperationException("保存用户第三方数据失败");
+        }
+
+        return userLoginEncapsulation(userId, PlatformConstant.LOGIN_PLATFORM_SMALL_PROGRAM);
     }
 
 
