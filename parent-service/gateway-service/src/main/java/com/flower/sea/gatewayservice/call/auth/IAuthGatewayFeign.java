@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author zhangLei
  * @serial 2019/11/13
  */
-@FeignClient(value = "auth-service", fallback = AuthCallImpl.class)
-@Service("authCall")
-public interface IAuthCall {
+@FeignClient(value = "auth-service", fallback = AuthGatewayFeignImpl.class)
+public interface IAuthGatewayFeign {
 
     String API_AUTH = "/api/authority";
 

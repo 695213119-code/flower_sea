@@ -4,41 +4,23 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/constant/CommonConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/UserExtra.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/UserThirdparty.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/AuthCallImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthCall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/constant/MainScanConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/UserLoginResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/IUserLoginStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/scene/UserScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/mapper/UserExtraMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/mapper/UserThirdpartyMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/service/IUserExtraService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/service/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/service/IUserThirdpartyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/service/impl/UserExtraServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/user/service/impl/UserThirdpartyServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/mapping/UserExtraMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/mapping/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/mapping/UserThirdpartyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/EDZ.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/EDZ.xml" afterDir="false" />
+    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="提交登录代码">
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/ThirdPartyBindingUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/ResponseObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/ResponseObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate-service/src/main/java/com/flower/sea/generateservice/MpGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/generate-service/src/main/java/com/flower/sea/generateservice/MpGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/UserServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/UserLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/UserLoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/call/auth/AuthCallImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/call/auth/AuthGatewayFeignImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/call/auth/IAuthCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/call/auth/IAuthGatewayFeign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/filter/AuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/AuthCallImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/AuthUserFeignImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthUserFeign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/constant/MainScanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/config/UtilsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/UserLoginResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/user/UserLoginResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/WechatCallbackDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/wechat/WechatCallbackDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WechatUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WechatUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +63,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8 (2)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -129,7 +111,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -299,6 +281,7 @@
       <item itemvalue="Application.MpGenerator" />
       <item itemvalue="Application.IdUtils" />
       <item itemvalue="Application.GatewayUtils" />
+      <item itemvalue="JUnit.test.add" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.EurekaServiceApplication" />
       <item itemvalue="Spring Boot.GatewayServiceApplication" />
@@ -308,7 +291,6 @@
       <item itemvalue="Spring Boot.ApiServiceApplication" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
       <item itemvalue="Spring Boot.CoreServiceApplication" />
-      <item itemvalue="JUnit.test.add" />
     </list>
     <recent_temporary>
       <list>
@@ -349,7 +331,9 @@
       <workItem from="1575465166556" duration="1920000" />
       <workItem from="1575468068216" duration="7918000" />
       <workItem from="1575507430928" duration="18273000" />
-      <workItem from="1575629088379" duration="16916000" />
+      <workItem from="1575629088379" duration="21214000" />
+      <workItem from="1575881753060" duration="20000" />
+      <workItem from="1576114612509" duration="12583000" />
     </task>
     <task id="LOCAL-00001" summary="提交父级项目">
       <created>1572934125567</created>
@@ -554,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575629241234</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="提交登录代码">
+      <created>1575742764158</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1575742764158</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

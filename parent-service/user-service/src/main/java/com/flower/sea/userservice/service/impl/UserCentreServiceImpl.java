@@ -1,6 +1,5 @@
 package com.flower.sea.userservice.service.impl;
 
-import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.flower.sea.commonservice.constant.CommonConstant;
 import com.flower.sea.commonservice.enumeration.SystemEnumeration;
@@ -9,10 +8,10 @@ import com.flower.sea.commonservice.utils.JsonUtils;
 import com.flower.sea.commonservice.utils.RedisUtils;
 import com.flower.sea.entityservice.user.User;
 import com.flower.sea.entityservice.user.UserExtra;
-import com.flower.sea.userservice.call.auth.IAuthCall;
+import com.flower.sea.userservice.call.auth.IAuthUserFeign;
 import com.flower.sea.userservice.dto.in.UserLoginDTO;
-import com.flower.sea.userservice.dto.out.UserLoginResponseDTO;
-import com.flower.sea.userservice.dto.out.WechatCallbackDTO;
+import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
+import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
 import com.flower.sea.userservice.service.IUserCentreService;
 import com.flower.sea.userservice.strategy.key.UserStrategyKey;
 import com.flower.sea.userservice.strategy.scene.UserScene;
@@ -23,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -41,28 +41,27 @@ public class UserCentreServiceImpl implements IUserCentreService {
     private final UserScene userScene;
     private final IUserService userService;
     private final IUserExtraService userExtraService;
-    private final IAuthCall authCall;
+    private final IAuthUserFeign authUserFeign;
     private final RedisUtils redisUtils;
 
     @Autowired
-    public UserCentreServiceImpl(UserScene userScene, IUserService userService, IUserExtraService userExtraService, IAuthCall authCall, RedisUtils redisUtils) {
+    public UserCentreServiceImpl(UserScene userScene, IUserService userService, IUserExtraService userExtraService, @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign, RedisUtils redisUtils) {
         this.userScene = userScene;
         this.userService = userService;
         this.userExtraService = userExtraService;
-        this.authCall = authCall;
+        this.authUserFeign = authUserFeign;
         this.redisUtils = redisUtils;
     }
 
     @Override
     public ResponseObject getWechatOpenId(String wechatCode) {
-        Map<String, String> wechatCallbackDataMap = WechatUtils.getWechatCallbackData(wechatCode);
-        if (CollUtil.isNotEmpty(wechatCallbackDataMap)) {
-            WechatCallbackDTO wechatCallbackDto = new WechatCallbackDTO();
-            wechatCallbackDto.setOpenId(wechatCallbackDataMap.get(WechatUtils.OPEN_ID));
-            wechatCallbackDto.setSessionKey(wechatCallbackDataMap.get(WechatUtils.SESSION_KEY));
-            return ResponseObject.success(wechatCallbackDto);
+        WechatCallbackDTO wechatCallbackDto = new WechatCallbackDTO();
+        WechatUtils.WechatCallback wechatCallback = WechatUtils.getWechatCallbackData(wechatCode);
+        if (!WechatUtils.SUCCESS.equals(wechatCallback.getCode())) {
+            return ResponseObject.businessFailure("获取openId失败!");
         }
-        return ResponseObject.failure("获取微信回调数据失败!");
+        BeanUtils.copyProperties(wechatCallback, wechatCallbackDto);
+        return ResponseObject.success(wechatCallbackDto);
     }
 
     @Override
@@ -92,7 +91,7 @@ public class UserCentreServiceImpl implements IUserCentreService {
 
         //生成用户token -根据字典获取
         final long invalidTime = 183 * 24 * 60 * 60 * 1000L;
-        ResponseObject userTokenResponseObject = authCall.generateUserToken(invalidTime, user.getId());
+        ResponseObject userTokenResponseObject = authUserFeign.generateUserToken(invalidTime, user.getId());
         if (null == userTokenResponseObject) {
             return ResponseObject.businessFailure("获取用户Token失败!");
         }

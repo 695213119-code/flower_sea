@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
  * @author zhangLei
  * @serial 2019/11/13
  */
-@Component
+@Component("IAuthUserFeign")
 @Slf4j
-public class AuthCallImpl implements IAuthCall {
+public class AuthUserFeignImpl implements IAuthUserFeign {
 
 
     @Override

@@ -1,15 +1,19 @@
 package com.flower.sea.userservice.controller;
 
+import com.flower.sea.commonservice.exception.BusinessException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.startercustomapi.annotation.ApiMenuAnnotation;
 import com.flower.sea.startercustomapi.annotation.AuthorityAnnotation;
+import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
 import com.flower.sea.userservice.dto.in.UserLoginDTO;
-import com.flower.sea.userservice.dto.out.WechatCallbackDTO;
+import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
+import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
 import com.flower.sea.userservice.service.IUserCentreService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -38,10 +42,21 @@ public class UserCentreController {
     }
 
     @PostMapping("/login")
-    @ApiOperation("用户登录")
+    @ApiOperation(value = "用户登录", response = UserLoginResponseDTO.class)
     @AuthorityAnnotation(isToken = false)
     public ResponseObject login(@ApiParam(value = "用户登录参数DTO", required = true) @RequestBody UserLoginDTO userLoginDTO) {
         return userCentreService.login(userLoginDTO);
     }
+
+    @PostMapping("/thirdPartyBindingUser")
+    @ApiOperation("第三方绑定用户")
+    @AuthorityAnnotation(isToken = false)
+    public ResponseObject thirdPartyBindingUser(@ApiParam(value = "第三方绑定用户参数DTO", required = true) @RequestBody ThirdPartyBindingUserDTO thirdPartyBindingUserDTO) {
+        if (true) {
+            throw new BusinessException("参数校验不通过!");
+        }
+        return null;
+    }
+
 
 }

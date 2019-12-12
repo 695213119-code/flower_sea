@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
  * @author zhangLei
  * @serial 2019/11/13
  */
-@Component
+@Component("IAuthGatewayFeign")
 @Slf4j
-public class AuthCallImpl implements IAuthCall {
+public class AuthGatewayFeignImpl implements IAuthGatewayFeign {
 
     @Override
     public ResponseObject verificationIsToken(Gateway gateway) {

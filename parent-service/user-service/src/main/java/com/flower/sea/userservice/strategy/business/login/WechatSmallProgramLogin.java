@@ -1,6 +1,5 @@
 package com.flower.sea.userservice.strategy.business.login;
 
-import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.entityservice.user.User;
@@ -13,8 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 /**
  * 微信小程序登录
@@ -50,11 +47,11 @@ public class WechatSmallProgramLogin implements IUserLoginStrategy {
         if (StringUtils.isNotBlank(userLoginDTO.getOpenId())) {
             openId = userLoginDTO.getOpenId();
         } else {
-            Map<String, String> wechatCallbackDataMap = WechatUtils.getWechatCallbackData(userLoginDTO.getWechatCode());
-            if (CollUtil.isEmpty(wechatCallbackDataMap) || StringUtils.isBlank(wechatCallbackDataMap.get(WechatUtils.OPEN_ID))) {
-                return ResponseObject.businessFailure("用户不存在!");
+            WechatUtils.WechatCallback wechatCallback = WechatUtils.getWechatCallbackData(userLoginDTO.getWechatCode());
+            if (!WechatUtils.SUCCESS.equals(wechatCallback.getCode())) {
+                return ResponseObject.businessFailure("获取用户信息失败!");
             }
-            openId = wechatCallbackDataMap.get(WechatUtils.OPEN_ID);
+            openId = wechatCallback.getOpenId();
         }
 
         UserThirdparty userThirdparty = userThirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", openId));

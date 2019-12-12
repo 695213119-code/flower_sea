@@ -1,4 +1,4 @@
-package com.flower.sea.userservice.dto.out;
+package com.flower.sea.userservice.dto.out.wechat;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
