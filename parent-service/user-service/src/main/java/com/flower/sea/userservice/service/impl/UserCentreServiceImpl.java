@@ -87,16 +87,16 @@ public class UserCentreServiceImpl implements IUserCentreService {
             return ResponseObject.businessFailure(User.UserEnum.USER_DISABLE.getMessage());
         }
 
-        UserLoginResponseDTO userLoginResponseDTO = new UserLoginResponseDTO();
+        UserLoginResponseDTO userLoginResponse = new UserLoginResponseDTO();
 
         //生成用户token -根据字典获取
         final long invalidTime = 183 * 24 * 60 * 60 * 1000L;
         ResponseObject userTokenResponseObject = authUserFeign.generateUserToken(invalidTime, user.getId());
-        if (null == userTokenResponseObject) {
+        if ((null == userTokenResponseObject) || (!userTokenResponseObject.getCode().equals(HttpStatus.OK.value()))) {
             return ResponseObject.businessFailure("获取用户Token失败!");
         }
         String userToken = (String) userTokenResponseObject.getData();
-        userLoginResponseDTO.setUserToken(userToken);
+        userLoginResponse.setUserToken(userToken);
 
         //将token存入redis-删除上一个用户token
         String userIdLoginPlatformRedisKey = user.getId() + "_" + loginPlatform;
@@ -110,10 +110,10 @@ public class UserCentreServiceImpl implements IUserCentreService {
         UserExtra userExtra = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", user.getId()).
                 eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
         if (null != userExtra) {
-            BeanUtils.copyProperties(userExtra, userLoginResponseDTO);
+            BeanUtils.copyProperties(userExtra, userLoginResponse);
         }
 
-        return ResponseObject.success(userLoginResponseDTO);
+        return ResponseObject.success(userLoginResponse);
     }
 
 
