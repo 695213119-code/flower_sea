@@ -12,4 +12,5 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.flower.sea.commonservice.utils")
 @Configuration
 public class UtilsConfig {
+
 }

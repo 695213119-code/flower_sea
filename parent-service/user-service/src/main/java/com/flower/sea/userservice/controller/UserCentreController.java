@@ -1,6 +1,5 @@
 package com.flower.sea.userservice.controller;
 
-import com.flower.sea.commonservice.exception.BusinessException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.startercustomapi.annotation.ApiMenuAnnotation;
 import com.flower.sea.startercustomapi.annotation.AuthorityAnnotation;
@@ -13,7 +12,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -49,7 +47,7 @@ public class UserCentreController {
     }
 
     @PostMapping("/thirdPartyBindingUser")
-    @ApiOperation("第三方绑定用户")
+    @ApiOperation(value = "第三方绑定用户", response = UserLoginResponseDTO.class)
     @AuthorityAnnotation(isToken = false)
     public ResponseObject thirdPartyBindingUser(@ApiParam(value = "第三方绑定用户参数DTO", required = true) @RequestBody ThirdPartyBindingUserDTO thirdPartyBindingUserDTO) {
         return userCentreService.thirdPartyBindingUser(thirdPartyBindingUserDTO);
