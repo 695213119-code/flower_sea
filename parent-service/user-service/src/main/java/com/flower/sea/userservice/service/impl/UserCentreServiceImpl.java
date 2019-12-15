@@ -23,7 +23,7 @@ import com.flower.sea.userservice.strategy.scene.UserScene;
 import com.flower.sea.userservice.user.service.IUserExtraService;
 import com.flower.sea.userservice.user.service.IUserService;
 import com.flower.sea.userservice.user.service.IUserThirdpartyService;
-import com.flower.sea.userservice.utils.WechatUtils;
+import com.flower.sea.userservice.utils.WeChatUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -62,13 +62,13 @@ public class UserCentreServiceImpl implements IUserCentreService {
     }
 
     @Override
-    public ResponseObject getWechatOpenId(String wechatCode) {
+    public ResponseObject getWeChatOpenId(String weChatCode) {
         WechatCallbackDTO wechatCallbackDto = new WechatCallbackDTO();
-        WechatUtils.WechatCallback wechatCallback = WechatUtils.getWechatCallbackData(wechatCode);
-        if (!WechatUtils.SUCCESS.equals(wechatCallback.getCode())) {
+        WeChatUtils.WeChatCallback weChatCallback = WeChatUtils.getWeChatCallbackData(weChatCode);
+        if (!WeChatUtils.SUCCESS.equals(weChatCallback.getCode())) {
             return ResponseObject.businessFailure("获取openId失败!");
         }
-        BeanUtils.copyProperties(wechatCallback, wechatCallbackDto);
+        BeanUtils.copyProperties(weChatCallback, wechatCallbackDto);
         return ResponseObject.success(wechatCallbackDto);
     }
 
@@ -195,12 +195,12 @@ public class UserCentreServiceImpl implements IUserCentreService {
         }
 
         //绑定第三方
-        UserThirdparty userThirdpartyNew = new UserThirdparty();
-        userThirdpartyNew.setId(IdUtils.generateId());
-        userThirdpartyNew.setUserId(userId);
-        BeanUtils.copyProperties(thirdPartyBindingUserDTO, userThirdpartyNew);
+        UserThirdparty userThirdPartyNew = new UserThirdparty();
+        userThirdPartyNew.setId(IdUtils.generateId());
+        userThirdPartyNew.setUserId(userId);
+        BeanUtils.copyProperties(thirdPartyBindingUserDTO, userThirdPartyNew);
         try {
-            userThirdpartyNew.insert();
+            userThirdPartyNew.insert();
         } catch (Exception e) {
             log.error("保存用户第三方数据失败,原因:{}", e.getMessage());
             throw new DbOperationException("保存用户第三方数据失败");
@@ -232,7 +232,7 @@ public class UserCentreServiceImpl implements IUserCentreService {
         Map<Integer, String> loginTypeStrategyKeyMap = new HashMap<>(8);
         loginTypeStrategyKeyMap.put(1, UserStrategyKey.LOGIN_TYPE_ACCOUNT_AND_PASSWORD);
         loginTypeStrategyKeyMap.put(2, UserStrategyKey.LOGIN_TYPE_PHONE_SHORT_CODE);
-        loginTypeStrategyKeyMap.put(3, UserStrategyKey.LOGIN_TYPE_WECHAT_CODE);
+        loginTypeStrategyKeyMap.put(3, UserStrategyKey.LOGIN_TYPE_WE_CHAT_CODE);
 
         loginPlatformStrategyKey = loginPlatformStrategyKeyMap.get(loginPlatform);
         if (StringUtils.isBlank(loginPlatformStrategyKey)) {

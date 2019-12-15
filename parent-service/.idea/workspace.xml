@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/config/UtilsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/config/UtilsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/SpringContextUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/SpringContextUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/key/UserStrategyKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/key/UserStrategyKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WechatUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WeChatUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

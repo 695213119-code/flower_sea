@@ -13,10 +13,10 @@ public interface IUserCentreService {
     /**
      * 获取微信的openId
      *
-     * @param wechatCode 微信的用户code
+     * @param weChatCode 微信的用户code
      * @return ResponseObject
      */
-    ResponseObject getWechatOpenId(String wechatCode);
+    ResponseObject getWeChatOpenId(String weChatCode);
 
     /**
      * 用户登录

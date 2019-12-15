@@ -7,7 +7,7 @@ import com.flower.sea.entityservice.user.UserThirdparty;
 import com.flower.sea.userservice.dto.in.UserLoginDTO;
 import com.flower.sea.userservice.service.IUserCentreService;
 import com.flower.sea.userservice.user.service.IUserThirdpartyService;
-import com.flower.sea.userservice.utils.WechatUtils;
+import com.flower.sea.userservice.utils.WeChatUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +47,11 @@ public class WechatSmallProgramLogin implements IUserLoginStrategy {
         if (StringUtils.isNotBlank(userLoginDTO.getOpenId())) {
             openId = userLoginDTO.getOpenId();
         } else {
-            WechatUtils.WechatCallback wechatCallback = WechatUtils.getWechatCallbackData(userLoginDTO.getWechatCode());
-            if (!WechatUtils.SUCCESS.equals(wechatCallback.getCode())) {
+            WeChatUtils.WeChatCallback weChatCallback = WeChatUtils.getWeChatCallbackData(userLoginDTO.getWechatCode());
+            if (!WeChatUtils.SUCCESS.equals(weChatCallback.getCode())) {
                 return ResponseObject.businessFailure("获取用户信息失败!");
             }
-            openId = wechatCallback.getOpenId();
+            openId = weChatCallback.getOpenId();
         }
 
         UserThirdparty userThirdparty = userThirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", openId));

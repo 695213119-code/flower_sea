@@ -32,11 +32,11 @@ public class UserCentreController {
     }
 
 
-    @GetMapping("/getWechatOpenId")
+    @GetMapping("/getWeChatOpenId")
     @ApiOperation(value = "获取微信的openId", response = WechatCallbackDTO.class)
     @AuthorityAnnotation(isToken = false)
-    public ResponseObject getWechatOpenId(@ApiParam(value = "微信的Code", required = true) @RequestParam String wechatCode) {
-        return userCentreService.getWechatOpenId(wechatCode);
+    public ResponseObject getWeChatOpenId(@ApiParam(value = "微信的Code", required = true) @RequestParam String weChatCode) {
+        return userCentreService.getWeChatOpenId(weChatCode);
     }
 
     @PostMapping("/login")

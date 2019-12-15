@@ -35,7 +35,7 @@ public class UserStrategyKey {
     /**
      * 登录方式-微信的code
      */
-    public static final String LOGIN_TYPE_WECHAT_CODE = "login_type_wechat_code";
+    public static final String LOGIN_TYPE_WE_CHAT_CODE = "login_type_we_chat_code";
 
     /**
      * 登录方式-手机短信验证码

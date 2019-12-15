@@ -20,7 +20,7 @@ public class UserStrategyFactory {
     static {
         //微信小程序登录
         WechatSmallProgramLogin wechatSmallProgramLogin = SpringContextUtils.getBean(WechatSmallProgramLogin.class);
-        userStrategyFactoryMap.put(UserStrategyKey.LOGIN_PLATFORM_SMALL_PROGRAM + UserStrategyKey.LOGIN_TYPE_WECHAT_CODE, wechatSmallProgramLogin);
+        userStrategyFactoryMap.put(UserStrategyKey.LOGIN_PLATFORM_SMALL_PROGRAM + UserStrategyKey.LOGIN_TYPE_WE_CHAT_CODE, wechatSmallProgramLogin);
 
 
     }
