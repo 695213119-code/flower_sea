@@ -24,7 +24,7 @@ public class HttpUtils {
      * @return String
      */
     public static String httpGet(String url) {
-        log.info("Get请求:URL===>{}", url);
+        log.info("HTTP-->GET-->:[url:{}]", url);
         String result = null;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
@@ -34,7 +34,7 @@ public class HttpUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info("Get请求:返回值===>{}", result);
+        log.info("result:{}", result);
         return result;
     }
 

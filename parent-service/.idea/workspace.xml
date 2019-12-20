@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpsUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/ListSortUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/key/UserStrategyKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/key/UserStrategyKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WechatUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WeChatUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,24 +70,24 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping" />
-      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping\" />
-      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.flower.sea.coreservice.swagger" />
-      <recent name="com.flower.sea.commonservice.utils" />
-      <recent name="com.flower.sea.gatewayservice.vo" />
-      <recent name="com.flower.sea.authservice.pojo.bo.verification" />
-      <recent name="com.flower.sea.userservice" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\call\auth" />
       <recent name="D:\working\flower_sea\parent-service\user-service\src\main\resources\mapping" />
       <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\service\impl" />
       <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\service" />
       <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.flower.sea.commonservice.utils" />
+      <recent name="com.flower.sea.coreservice.swagger" />
+      <recent name="com.flower.sea.gatewayservice.vo" />
+      <recent name="com.flower.sea.authservice.pojo.bo.verification" />
+      <recent name="com.flower.sea.userservice" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping" />
+      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping\" />
+      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -326,6 +325,7 @@
       <workItem from="1575629088379" duration="21214000" />
       <workItem from="1575881753060" duration="20000" />
       <workItem from="1576114612509" duration="18981000" />
+      <workItem from="1576820188759" duration="815000" />
     </task>
     <task id="LOCAL-00001" summary="提交父级项目">
       <created>1572934125567</created>
