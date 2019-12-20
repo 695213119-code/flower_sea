@@ -88,8 +88,11 @@ public class JsonUtils {
     }
 
 
-
-    public static Map<String, Object> object2Map(Object o) {
+    /**
+     * @param o
+     * @return
+     */
+    public static Map object2Map(Object o) {
         return OBJECT_MAPPER.convertValue(o, Map.class);
     }
 

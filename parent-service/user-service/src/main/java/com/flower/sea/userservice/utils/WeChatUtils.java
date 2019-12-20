@@ -2,7 +2,7 @@ package com.flower.sea.userservice.utils;
 
 import com.flower.sea.commonservice.utils.HttpUtils;
 import com.flower.sea.commonservice.utils.JsonUtils;
-import com.flower.sea.userservice.properties.WechatProperties;
+import com.flower.sea.userservice.properties.WeChatProperties;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -25,7 +25,7 @@ public class WeChatUtils {
     /**
      * 由于对工具类的定义(都是静态方法,且不通过注入的方式使用) 这里使用SpringContextUtils获取微信的配置类信息
      */
-    private static final WechatProperties WECHAT_PROPERTIES = SpringContextUtils.getBean(WechatProperties.class);
+    private static final WeChatProperties WECHAT_PROPERTIES = SpringContextUtils.getBean(WeChatProperties.class);
 
     /**
      * 获取微信openId的固定请求地址

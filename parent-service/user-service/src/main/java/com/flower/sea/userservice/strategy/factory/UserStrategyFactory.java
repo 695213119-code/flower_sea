@@ -1,7 +1,7 @@
 package com.flower.sea.userservice.strategy.factory;
 
+import com.flower.sea.entityservice.user.User;
 import com.flower.sea.userservice.strategy.business.login.WechatSmallProgramLogin;
-import com.flower.sea.userservice.strategy.key.UserStrategyKey;
 import com.flower.sea.userservice.utils.SpringContextUtils;
 
 import java.util.HashMap;
@@ -18,9 +18,10 @@ public class UserStrategyFactory {
     private static Map<String, Object> userStrategyFactoryMap = new HashMap<>(16);
 
     static {
+
         //微信小程序登录
         WechatSmallProgramLogin wechatSmallProgramLogin = SpringContextUtils.getBean(WechatSmallProgramLogin.class);
-        userStrategyFactoryMap.put(UserStrategyKey.LOGIN_PLATFORM_SMALL_PROGRAM + UserStrategyKey.LOGIN_TYPE_WE_CHAT_CODE, wechatSmallProgramLogin);
+        userStrategyFactoryMap.put(User.userLoginStrategyKeyEnum.LOGIN_PLATFORM_SMALL_PROGRAM.getKey() + User.userLoginStrategyKeyEnum.LOGIN_TYPE_WE_CHAT_OPEN_ID.getKey(), wechatSmallProgramLogin);
 
 
     }

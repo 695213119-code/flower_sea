@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api/user")
-@Api(tags = "用户")
+@Api(tags = "用户模块")
 @ApiMenuAnnotation(name = "用户模块")
 public class UserCentreController {
 

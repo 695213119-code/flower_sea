@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpsUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/ListSortUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/HttpUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/JsonUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthUserFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthUserFeign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/constant/PlatformConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/constant/PlatformConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/properties/WechatProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/properties/WeChatProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/key/UserStrategyKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WeChatUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WeChatUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -325,7 +330,7 @@
       <workItem from="1575629088379" duration="21214000" />
       <workItem from="1575881753060" duration="20000" />
       <workItem from="1576114612509" duration="18981000" />
-      <workItem from="1576820188759" duration="815000" />
+      <workItem from="1576820188759" duration="4473000" />
     </task>
     <task id="LOCAL-00001" summary="提交父级项目">
       <created>1572934125567</created>
@@ -565,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576157173208</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="add 添加https工具类 和list集合排序工具类">
+      <created>1576821051468</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1576821051468</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,6 +625,7 @@
     <MESSAGE value="update 更新微信获取openId的接口" />
     <MESSAGE value="update 更新获取用户代码的细节" />
     <MESSAGE value="update 更新用户绑定第三方的代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 更新用户绑定第三方的代码" />
+    <MESSAGE value="add 添加https工具类 和list集合排序工具类" />
+    <option name="LAST_COMMIT_MESSAGE" value="add 添加https工具类 和list集合排序工具类" />
   </component>
 </project>

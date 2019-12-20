@@ -18,7 +18,6 @@ import com.flower.sea.userservice.dto.in.UserLoginDTO;
 import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
 import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
 import com.flower.sea.userservice.service.IUserCentreService;
-import com.flower.sea.userservice.strategy.key.UserStrategyKey;
 import com.flower.sea.userservice.strategy.scene.UserScene;
 import com.flower.sea.userservice.user.service.IUserExtraService;
 import com.flower.sea.userservice.user.service.IUserService;
@@ -52,7 +51,12 @@ public class UserCentreServiceImpl implements IUserCentreService {
     private final IUserThirdpartyService thirdpartyService;
 
     @Autowired
-    public UserCentreServiceImpl(UserScene userScene, IUserService userService, IUserExtraService userExtraService, @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign, RedisUtils redisUtils, IUserThirdpartyService thirdpartyService) {
+    public UserCentreServiceImpl(UserScene userScene,
+                                 IUserService userService,
+                                 IUserExtraService userExtraService,
+                                 @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign,
+                                 RedisUtils redisUtils,
+                                 IUserThirdpartyService thirdpartyService) {
         this.userScene = userScene;
         this.userService = userService;
         this.userExtraService = userExtraService;
@@ -80,8 +84,7 @@ public class UserCentreServiceImpl implements IUserCentreService {
         if (HttpStatus.OK.value() != userStrategyKeyResponseObject.getCode()) {
             return ResponseObject.failure(SystemEnumeration.BUSINESS_EXCEPTION.getCode(), userStrategyKeyResponseObject.getMessage());
         }
-        String userStrategyKey = userStrategyKeyResponseObject.getData();
-        return userScene.login(userLoginDTO, userStrategyKey);
+        return userScene.login(userLoginDTO, userStrategyKeyResponseObject.getData());
     }
 
     @Override
@@ -224,15 +227,15 @@ public class UserCentreServiceImpl implements IUserCentreService {
 
         //保存登录平台的策略key
         Map<Integer, String> loginPlatformStrategyKeyMap = new HashMap<>(8);
-        loginPlatformStrategyKeyMap.put(1, UserStrategyKey.LOGIN_PLATFORM_PC);
-        loginPlatformStrategyKeyMap.put(2, UserStrategyKey.LOGIN_PLATFORM_APP);
-        loginPlatformStrategyKeyMap.put(3, UserStrategyKey.LOGIN_PLATFORM_SMALL_PROGRAM);
+        loginPlatformStrategyKeyMap.put(1, User.userLoginStrategyKeyEnum.LOGIN_PLATFORM_PC.getKey());
+        loginPlatformStrategyKeyMap.put(2, User.userLoginStrategyKeyEnum.LOGIN_PLATFORM_APP.getKey());
+        loginPlatformStrategyKeyMap.put(3, User.userLoginStrategyKeyEnum.LOGIN_PLATFORM_SMALL_PROGRAM.getKey());
 
         //保存登录方式的策略key
         Map<Integer, String> loginTypeStrategyKeyMap = new HashMap<>(8);
-        loginTypeStrategyKeyMap.put(1, UserStrategyKey.LOGIN_TYPE_ACCOUNT_AND_PASSWORD);
-        loginTypeStrategyKeyMap.put(2, UserStrategyKey.LOGIN_TYPE_PHONE_SHORT_CODE);
-        loginTypeStrategyKeyMap.put(3, UserStrategyKey.LOGIN_TYPE_WE_CHAT_CODE);
+        loginTypeStrategyKeyMap.put(1, User.userLoginStrategyKeyEnum.LOGIN_TYPE_ACCOUNT_AND_PASSWORD.getKey());
+        loginTypeStrategyKeyMap.put(2, User.userLoginStrategyKeyEnum.LOGIN_TYPE_PHONE_SHORT_CODE.getKey());
+        loginTypeStrategyKeyMap.put(3, User.userLoginStrategyKeyEnum.LOGIN_TYPE_WE_CHAT_OPEN_ID.getKey());
 
         loginPlatformStrategyKey = loginPlatformStrategyKeyMap.get(loginPlatform);
         if (StringUtils.isBlank(loginPlatformStrategyKey)) {

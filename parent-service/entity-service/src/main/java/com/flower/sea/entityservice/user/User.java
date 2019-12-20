@@ -76,7 +76,7 @@ public class User extends Model<User> {
 
 
     /**
-     * 用户的枚举类
+     * 用户的业务枚举类
      */
     public enum UserEnum {
 
@@ -98,21 +98,67 @@ public class User extends Model<User> {
             return code;
         }
 
-        public void setCode(Integer code) {
-            this.code = code;
-        }
-
         public String getMessage() {
             return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
         }
 
         UserEnum(Integer code, String message) {
             this.code = code;
             this.message = message;
+        }
+    }
+
+
+    /**
+     * 用户登录策略key的枚举类
+     */
+    public enum userLoginStrategyKeyEnum {
+
+        /**
+         * 登录平台-pc
+         */
+        LOGIN_PLATFORM_PC("login_platform_pc", "登录平台-pc"),
+
+        /**
+         * 登录平台-app
+         */
+        LOGIN_PLATFORM_APP("login_platform_app", "登录平台-app"),
+
+        /**
+         * 登录平台-小程序
+         */
+        LOGIN_PLATFORM_SMALL_PROGRAM("login_platform_small_program", "登录平台-小程序"),
+
+        /**
+         * 登录方式-账号加密码
+         */
+        LOGIN_TYPE_ACCOUNT_AND_PASSWORD("login_type_account_and_password", "登录方式-账号加密码"),
+
+        /**
+         * 登录方式-微信的openId
+         */
+        LOGIN_TYPE_WE_CHAT_OPEN_ID("login_type_we_chat_open_id", "登录方式-微信的openId"),
+
+        /**
+         * 登录方式-手机短信验证码
+         */
+        LOGIN_TYPE_PHONE_SHORT_CODE("login_type_phone_short_code", "登录方式-手机短信验证码");
+
+        private String key;
+
+        private String value;
+
+        public String getKey() {
+            return key;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        userLoginStrategyKeyEnum(String key, String value) {
+            this.key = key;
+            this.value = value;
         }
     }
 

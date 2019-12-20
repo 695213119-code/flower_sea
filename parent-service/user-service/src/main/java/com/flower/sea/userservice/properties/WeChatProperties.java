@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties(prefix = "wechat")
-public class WechatProperties {
+public class WeChatProperties {
 
     /**
      * 微信的appId

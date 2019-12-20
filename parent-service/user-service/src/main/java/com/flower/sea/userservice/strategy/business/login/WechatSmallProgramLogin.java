@@ -36,13 +36,9 @@ public class WechatSmallProgramLogin implements IUserLoginStrategy {
 
     @Override
     public ResponseObject login(UserLoginDTO userLoginDTO) {
-
-        log.info("=====微信小程序登录!=====");
-
         if (StringUtils.isBlank(userLoginDTO.getWechatCode()) && StringUtils.isBlank(userLoginDTO.getOpenId())) {
             return ResponseObject.businessFailure("wechatCode或者openId必须传递一个值");
         }
-
         String openId;
         if (StringUtils.isNotBlank(userLoginDTO.getOpenId())) {
             openId = userLoginDTO.getOpenId();
@@ -53,12 +49,10 @@ public class WechatSmallProgramLogin implements IUserLoginStrategy {
             }
             openId = weChatCallback.getOpenId();
         }
-
         UserThirdparty userThirdparty = userThirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", openId));
         if (null == userThirdparty) {
             return ResponseObject.failure(User.UserEnum.USER_DOES_NOT_BIND_THE_PHONE.getCode(), User.UserEnum.USER_DOES_NOT_BIND_THE_PHONE.getMessage());
         }
-
         return userCentreService.userLoginEncapsulation(userThirdparty.getUserId(), userLoginDTO.getLoginPlatform());
     }
 }
