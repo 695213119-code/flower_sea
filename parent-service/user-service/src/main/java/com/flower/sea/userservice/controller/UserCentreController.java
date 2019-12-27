@@ -51,7 +51,7 @@ public class UserCentreController {
     @AuthorityAnnotation(isToken = false)
     public ResponseObject thirdPartyBindingUser(@ApiParam(value = "第三方绑定用户参数DTO", required = true) @RequestBody @Validated ThirdPartyBindingUserDTO thirdPartyBindingUserDTO,
                                                 BindingResult bindingResult) {
-        return userCentreService.thirdPartyBindingUser(thirdPartyBindingUserDTO,bindingResult);
+        return userCentreService.thirdPartyBindingUser(thirdPartyBindingUserDTO, bindingResult);
     }
 
 

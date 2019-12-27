@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
 import java.util.concurrent.TimeUnit;
@@ -74,6 +75,7 @@ public class UserCentreServiceImpl implements IUserCentreService {
     }
 
 
+    @Transactional(rollbackFor = BusinessException.class)
     @Override
     public ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -84,67 +86,10 @@ public class UserCentreServiceImpl implements IUserCentreService {
         if (null != userThirdparty) {
             return ResponseObject.businessFailure("该用户已经绑定,请勿重复绑定!");
         }
-        //若用户不存在则直接生成一个用户
-        Long userId;
-        User userCheck = userService.selectOne(new EntityWrapper<User>().eq("phone", thirdPartyBindingUserDTO.getPhone())
-                .eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
-        if (null != userCheck) {
-            userId = userCheck.getId();
-        } else {
-            userId = IdUtils.generateId();
-            User user = new User();
-            user.setId(userId);
-            user.setPhone(thirdPartyBindingUserDTO.getPhone());
-            user.setUserName(thirdPartyBindingUserDTO.getPhone());
-            try {
-                user.insert();
-            } catch (Exception e) {
-                log.error("SQL==>insert用户数据失败,原因:{}", e.getMessage());
-                throw new DbOperationException("新增用户失败!");
-            }
-        }
-
+        //获取用户
+        Long userId = generateUser(thirdPartyBindingUserDTO.getPhone());
         //兼容用户附属数据
-        UserExtra userExtraCheck = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", userId).eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
-        if (null != userExtraCheck) {
-            int count = 0;
-            if (StringUtils.isBlank(userExtraCheck.getAvatar())) {
-                userExtraCheck.setAvatar(thirdPartyBindingUserDTO.getAvatar());
-                count++;
-            }
-            if (StringUtils.isBlank(userExtraCheck.getNickName())) {
-                userExtraCheck.setNickName(thirdPartyBindingUserDTO.getNickName());
-                count++;
-            }
-            if (null == userExtraCheck.getAge()) {
-                userExtraCheck.setAge(thirdPartyBindingUserDTO.getAge());
-                count++;
-            }
-            if (null == userExtraCheck.getGender()) {
-                userExtraCheck.setGender(thirdPartyBindingUserDTO.getGender());
-                count++;
-            }
-            if (count > 0) {
-                try {
-                    userExtraCheck.updateById();
-                } catch (Exception e) {
-                    log.error("SQL==>update用户附属表失败,原因:{}", e.getMessage());
-                    throw new DbOperationException("更新用户信息失败!");
-                }
-            }
-        } else {
-            UserExtra userExtra = new UserExtra();
-            BeanUtils.copyProperties(thirdPartyBindingUserDTO, userExtra);
-            userExtra.setId(IdUtils.generateId());
-            userExtra.setUserId(userId);
-            try {
-                userExtra.insert();
-            } catch (Exception e) {
-                log.error("SQL==>insert用户附属表失败,原因:{}", e.getMessage());
-                throw new DbOperationException("保存用户信息失败!");
-            }
-        }
-
+        compatibleUserAffiliation(userId, thirdPartyBindingUserDTO);
         //绑定第三方
         UserThirdparty userThirdPartyNew = new UserThirdparty();
         userThirdPartyNew.setId(IdUtils.generateId());
@@ -156,7 +101,6 @@ public class UserCentreServiceImpl implements IUserCentreService {
             log.error("保存用户第三方数据失败,原因:{}", e.getMessage());
             throw new DbOperationException("保存用户第三方数据失败");
         }
-
         return userLoginEncapsulation(userId, PlatformConstant.LOGIN_PLATFORM_SMALL_PROGRAM);
     }
 
@@ -168,6 +112,85 @@ public class UserCentreServiceImpl implements IUserCentreService {
             return ResponseObject.failure(User.UserEnum.WECHAT_UNBOUND_USER.getCode(), User.UserEnum.WECHAT_UNBOUND_USER.getMessage());
         }
         return userLoginEncapsulation(userThirdparty.getUserId(), PlatformConstant.LOGIN_PLATFORM_SMALL_PROGRAM);
+    }
+
+    /**
+     * 兼容用户的附属数据
+     * 不存在有则创建,存在则进行修改
+     *
+     * @param userId                   用户id
+     * @param thirdPartyBindingUserDTO 第三方用户的数据
+     */
+    private void compatibleUserAffiliation(Long userId, ThirdPartyBindingUserDTO thirdPartyBindingUserDTO) {
+        UserExtra userExtra = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", userId).eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        if (null != userExtra) {
+            int count = 0;
+            if (StringUtils.isBlank(userExtra.getAvatar())) {
+                userExtra.setAvatar(thirdPartyBindingUserDTO.getAvatar());
+                count++;
+            }
+            if (StringUtils.isBlank(userExtra.getNickName())) {
+                userExtra.setNickName(thirdPartyBindingUserDTO.getNickName());
+                count++;
+            }
+            if (null == userExtra.getAge()) {
+                userExtra.setAge(thirdPartyBindingUserDTO.getAge());
+                count++;
+            }
+            if (null == userExtra.getGender()) {
+                userExtra.setGender(thirdPartyBindingUserDTO.getGender());
+                count++;
+            }
+            if (count > 0) {
+                try {
+                    userExtra.updateById();
+                } catch (Exception e) {
+                    log.error("SQL==>update用户附属表失败,原因:{}", e.getMessage());
+                    throw new DbOperationException("更新用户信息失败!");
+                }
+            }
+        } else {
+            UserExtra userExtraNew = new UserExtra();
+            BeanUtils.copyProperties(thirdPartyBindingUserDTO, userExtraNew);
+            userExtraNew.setId(IdUtils.generateId());
+            userExtraNew.setUserId(userId);
+            try {
+                userExtraNew.insert();
+            } catch (Exception e) {
+                log.error("SQL==>insert用户附属表失败,原因:{}", e.getMessage());
+                throw new DbOperationException("保存用户信息失败!");
+            }
+        }
+    }
+
+
+    /**
+     * 根据手机号生成用户
+     * 用户不存在则直接生成一个用户
+     * 用户存在则返回用户id
+     *
+     * @param phone 用户手机号
+     * @return 用户id（Long）
+     */
+    private Long generateUser(String phone) {
+        Long userId;
+        User user = userService.selectOne(new EntityWrapper<User>().eq("phone", phone).eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        if (null != user) {
+            userId = user.getId();
+        } else {
+            userId = IdUtils.generateId();
+            User userNew = new User();
+            userNew.setId(userId);
+            userNew.setPhone(phone);
+            userNew.setUserName(phone);
+            try {
+                userNew.insert();
+            } catch (Exception e) {
+                log.error("SQL==>insert用户数据失败,原因:{}", e.getMessage());
+                throw new DbOperationException("新增用户失败!");
+            }
+        }
+        return userId;
     }
 
 

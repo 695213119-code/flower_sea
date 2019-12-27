@@ -17,8 +17,7 @@ public interface IUserCentreService {
      * @return ResponseObject
      */
     ResponseObject getWeChatOpenId(String weChatCode);
-
-
+    
     /**
      * 第三方绑定用户
      *

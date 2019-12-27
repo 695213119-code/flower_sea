@@ -20,9 +20,9 @@ public class SpringContextUtils implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         SpringContextUtils.applicationContext = applicationContext;
     }
-    
 
-    public static <T> T getBean(Class<T> clazz) {
+
+    static <T> T getBean(Class<T> clazz) {
         return applicationContext.getBean(clazz);
     }
 }

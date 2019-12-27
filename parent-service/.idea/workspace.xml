@@ -4,24 +4,12 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
+    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="update 修改微信小程序的登录接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/controller/AuthorityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/controller/AuthorityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/IAuthorityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/IAuthorityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/impl/AuthorityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/impl/AuthorityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/ResponseObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/recurrence/ResponseObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/AuthUserFeignImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/AuthUserFeignImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthUserFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthUserFeign.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/ThirdPartyBindingUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/ThirdPartyBindingUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/user/UserLoginResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/user/UserLoginResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/IUserLoginStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/business/login/WechatSmallProgramLogin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/factory/UserStrategyFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/strategy/scene/UserScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/SpringContextUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/SpringContextUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -338,7 +326,7 @@
       <workItem from="1576820188759" duration="4519000" />
       <workItem from="1577091151619" duration="2026000" />
       <workItem from="1577273713745" duration="437000" />
-      <workItem from="1577431469265" duration="6798000" />
+      <workItem from="1577431469265" duration="9953000" />
     </task>
     <task id="LOCAL-00001" summary="提交父级项目">
       <created>1572934125567</created>
@@ -592,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576826574449</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="update 修改微信小程序的登录接口">
+      <created>1577438346115</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1577438346115</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,6 +637,7 @@
     <MESSAGE value="update 更新用户绑定第三方的代码" />
     <MESSAGE value="add 添加https工具类 和list集合排序工具类" />
     <MESSAGE value="add 修改项目的整体结构" />
-    <option name="LAST_COMMIT_MESSAGE" value="add 修改项目的整体结构" />
+    <MESSAGE value="update 修改微信小程序的登录接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 修改微信小程序的登录接口" />
   </component>
 </project>
