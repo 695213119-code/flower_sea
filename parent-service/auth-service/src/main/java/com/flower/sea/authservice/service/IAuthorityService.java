@@ -21,7 +21,7 @@ public interface IAuthorityService {
      * @param userId      用户id
      * @return ResponseObject
      */
-    ResponseObject generateUserToken(Long invalidTime, Long userId);
+    ResponseObject<String> generateUserToken(Long invalidTime, Long userId);
 
     /**
      * 校验用户token

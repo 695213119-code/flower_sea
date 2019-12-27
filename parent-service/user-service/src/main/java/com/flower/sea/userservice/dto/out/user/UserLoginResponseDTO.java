@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 用户登录数据返回DTO
+ * 统一 用户登录后的返回数据
  *
  * @author zhangLei
  * @serial 2019/12/8 0:09

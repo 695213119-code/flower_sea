@@ -61,7 +61,7 @@ public class AuthorityServiceImpl implements IAuthorityService {
     }
 
     @Override
-    public ResponseObject generateUserToken(Long invalidTime, Long userId) {
+    public ResponseObject<String> generateUserToken(Long invalidTime, Long userId) {
         return ResponseObject.success(JwtUtils.generateToken(userId, invalidTime));
     }
 

@@ -2,7 +2,7 @@ package com.flower.sea.userservice.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.flower.sea.commonservice.constant.CommonConstant;
-import com.flower.sea.commonservice.enumeration.SystemEnumeration;
+import com.flower.sea.commonservice.exception.BusinessException;
 import com.flower.sea.commonservice.exception.DbOperationException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.IdUtils;
@@ -14,11 +14,9 @@ import com.flower.sea.entityservice.user.UserThirdparty;
 import com.flower.sea.userservice.call.auth.IAuthUserFeign;
 import com.flower.sea.userservice.constant.PlatformConstant;
 import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
-import com.flower.sea.userservice.dto.in.UserLoginDTO;
 import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
 import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
 import com.flower.sea.userservice.service.IUserCentreService;
-import com.flower.sea.userservice.strategy.scene.UserScene;
 import com.flower.sea.userservice.user.service.IUserExtraService;
 import com.flower.sea.userservice.user.service.IUserService;
 import com.flower.sea.userservice.user.service.IUserThirdpartyService;
@@ -30,9 +28,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -43,26 +40,26 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class UserCentreServiceImpl implements IUserCentreService {
 
-    private final UserScene userScene;
     private final IUserService userService;
     private final IUserExtraService userExtraService;
     private final IAuthUserFeign authUserFeign;
     private final RedisUtils redisUtils;
     private final IUserThirdpartyService thirdpartyService;
+    private final IUserThirdpartyService userThirdpartyService;
 
     @Autowired
-    public UserCentreServiceImpl(UserScene userScene,
-                                 IUserService userService,
-                                 IUserExtraService userExtraService,
-                                 @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign,
-                                 RedisUtils redisUtils,
-                                 IUserThirdpartyService thirdpartyService) {
-        this.userScene = userScene;
+    public UserCentreServiceImpl(
+            IUserService userService,
+            IUserExtraService userExtraService,
+            @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign,
+            RedisUtils redisUtils,
+            IUserThirdpartyService thirdpartyService, IUserThirdpartyService userThirdpartyService) {
         this.userService = userService;
         this.userExtraService = userExtraService;
         this.authUserFeign = authUserFeign;
         this.redisUtils = redisUtils;
         this.thirdpartyService = thirdpartyService;
+        this.userThirdpartyService = userThirdpartyService;
     }
 
     @Override
@@ -76,66 +73,17 @@ public class UserCentreServiceImpl implements IUserCentreService {
         return ResponseObject.success(wechatCallbackDto);
     }
 
-    @Override
-    public ResponseObject login(UserLoginDTO userLoginDTO) {
-        //TODO 参数校验
-
-        ResponseObject<String> userStrategyKeyResponseObject = getUserStrategyKey(userLoginDTO.getLoginPlatform(), userLoginDTO.getLoginType());
-        if (HttpStatus.OK.value() != userStrategyKeyResponseObject.getCode()) {
-            return ResponseObject.failure(SystemEnumeration.BUSINESS_EXCEPTION.getCode(), userStrategyKeyResponseObject.getMessage());
-        }
-        return userScene.login(userLoginDTO, userStrategyKeyResponseObject.getData());
-    }
 
     @Override
-    public ResponseObject userLoginEncapsulation(Long userId, Integer loginPlatform) {
-
-        User user = userService.selectOne(new EntityWrapper<User>().eq("id", userId)
-                .eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
-
-        //判断是否被禁用
-        if (User.UserEnum.USER_DISABLE.getCode().equals(user.getStatus())) {
-            return ResponseObject.businessFailure(User.UserEnum.USER_DISABLE.getMessage());
+    public ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseObject.businessFailure(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
-
-        UserLoginResponseDTO userLoginResponse = new UserLoginResponseDTO();
-
-        //生成用户token -根据字典获取
-        final long invalidTime = 183 * 24 * 60 * 60 * 1000L;
-        ResponseObject userTokenResponseObject = authUserFeign.generateUserToken(invalidTime, user.getId());
-        if ((null == userTokenResponseObject) || (!userTokenResponseObject.getCode().equals(HttpStatus.OK.value()))) {
-            return ResponseObject.businessFailure("获取用户Token失败!");
-        }
-        String userToken = (String) userTokenResponseObject.getData();
-        userLoginResponse.setUserToken(userToken);
-
-        //将token存入redis-删除上一个用户token
-        String userIdLoginPlatformRedisKey = user.getId() + "_" + loginPlatform;
-        String userOldTokenRedis = redisUtils.get(userIdLoginPlatformRedisKey);
-        if (StringUtils.isNotBlank(userOldTokenRedis)) {
-            redisUtils.delete(userOldTokenRedis);
-        }
-        redisUtils.set(userToken, JsonUtils.object2Json(user), invalidTime, TimeUnit.MILLISECONDS);
-        redisUtils.set(userIdLoginPlatformRedisKey, userToken, invalidTime, TimeUnit.MILLISECONDS);
-
-        UserExtra userExtra = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", user.getId()).
-                eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
-        if (null != userExtra) {
-            BeanUtils.copyProperties(userExtra, userLoginResponse);
-        }
-
-        return ResponseObject.success(userLoginResponse);
-    }
-
-    @Override
-    public ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO) {
-
         UserThirdparty userThirdparty = thirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", thirdPartyBindingUserDTO.getUnionId())
                 .eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
         if (null != userThirdparty) {
             return ResponseObject.businessFailure("该用户已经绑定,请勿重复绑定!");
         }
-
         //若用户不存在则直接生成一个用户
         Long userId;
         User userCheck = userService.selectOne(new EntityWrapper<User>().eq("phone", thirdPartyBindingUserDTO.getPhone())
@@ -212,41 +160,104 @@ public class UserCentreServiceImpl implements IUserCentreService {
         return userLoginEncapsulation(userId, PlatformConstant.LOGIN_PLATFORM_SMALL_PROGRAM);
     }
 
+    @Override
+    public ResponseObject weChatAppletLogin(String weChatOpenId) {
+        //判断该微信号是否绑定了用户
+        UserThirdparty userThirdparty = userThirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", weChatOpenId));
+        if (null == userThirdparty) {
+            return ResponseObject.failure(User.UserEnum.WECHAT_UNBOUND_USER.getCode(), User.UserEnum.WECHAT_UNBOUND_USER.getMessage());
+        }
+        return userLoginEncapsulation(userThirdparty.getUserId(), PlatformConstant.LOGIN_PLATFORM_SMALL_PROGRAM);
+    }
+
 
     /**
-     * 获取用户登录的策略key
+     * 处理用户登录的公共方法
      *
-     * @param loginPlatform 登录平台
-     * @param loginType     登录方式
+     * @param userId        用户id
+     * @param loginPlatform 登录端 1-pc 2-app 3-小程序
+     * @return ResponseObject
+     */
+    private ResponseObject userLoginEncapsulation(Long userId, Integer loginPlatform) {
+        User user = userService.selectOne(new EntityWrapper<User>().eq("id", userId)
+                .eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        //判断是否被禁用
+        if (User.UserEnum.USER_DISABLE.getCode().equals(user.getStatus())) {
+            return ResponseObject.businessFailure(User.UserEnum.USER_DISABLE.getMessage());
+        }
+        UserLoginResponseDTO userLoginResponse = new UserLoginResponseDTO();
+        //获取token的过期时间
+        Long invalidTime = getUserTokenExpirationDate(loginPlatform);
+        //获取用户token
+        String userToken = getUserToken(invalidTime, user.getId());
+        userLoginResponse.setUserToken(userToken);
+        //操作对应用户的redis
+        operationCorrespondingUserRedis(user.getId(), loginPlatform, user, invalidTime, userToken);
+        //获取用户的详细数据
+        userDetailed(userLoginResponse, user.getId());
+        return ResponseObject.success(userLoginResponse);
+    }
+
+    /**
+     * 获取用户登录时的详情
+     *
+     * @param userLoginResponse 用户数据返回类
+     * @param userId            用户id
+     */
+    private void userDetailed(UserLoginResponseDTO userLoginResponse, Long userId) {
+        UserExtra userExtra = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", userId).
+                eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        if (null != userExtra) {
+            BeanUtils.copyProperties(userExtra, userLoginResponse);
+        }
+    }
+
+    /**
+     * 操作对应用户的redis
+     *
+     * @param userId        用户id
+     * @param loginPlatform 登录端 1-pc 2-app 3-小程序
+     * @param user          用户对象
+     * @param invalidTime   token过期时间
+     * @param userToken     token
+     */
+    private void operationCorrespondingUserRedis(Long userId, Integer loginPlatform, User user, Long invalidTime, String userToken) {
+        //根据(固定头部_用户id_登录平台)组成redis的key
+        final String userLoginRedisHead = "user_login_redis_head";
+        String userIdLoginPlatformRedisKey = userLoginRedisHead + "-" + userId + "-" + loginPlatform;
+        //保存本次的token之前必须删除上一次的token,(一个账号在同一个端只能在一处登录)
+        String userOldToken = redisUtils.get(userIdLoginPlatformRedisKey);
+        if (StringUtils.isNotBlank(userOldToken)) {
+            redisUtils.delete(userOldToken);
+        }
+        redisUtils.set(userToken, JsonUtils.object2Json(user), invalidTime, TimeUnit.MILLISECONDS);
+        redisUtils.set(userIdLoginPlatformRedisKey, userToken, invalidTime, TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * 获取用户token
+     *
+     * @param invalidTime token的持续时间 毫秒值
+     * @param userId      用户id
      * @return String
      */
-    private ResponseObject<String> getUserStrategyKey(Integer loginPlatform, Integer loginType) {
-
-        String loginPlatformStrategyKey;
-        String loginTypeStrategyKey;
-
-        //保存登录平台的策略key
-        Map<Integer, String> loginPlatformStrategyKeyMap = new HashMap<>(8);
-        loginPlatformStrategyKeyMap.put(1, User.userLoginStrategyKeyEnum.LOGIN_PLATFORM_PC.getKey());
-        loginPlatformStrategyKeyMap.put(2, User.userLoginStrategyKeyEnum.LOGIN_PLATFORM_APP.getKey());
-        loginPlatformStrategyKeyMap.put(3, User.userLoginStrategyKeyEnum.LOGIN_PLATFORM_SMALL_PROGRAM.getKey());
-
-        //保存登录方式的策略key
-        Map<Integer, String> loginTypeStrategyKeyMap = new HashMap<>(8);
-        loginTypeStrategyKeyMap.put(1, User.userLoginStrategyKeyEnum.LOGIN_TYPE_ACCOUNT_AND_PASSWORD.getKey());
-        loginTypeStrategyKeyMap.put(2, User.userLoginStrategyKeyEnum.LOGIN_TYPE_PHONE_SHORT_CODE.getKey());
-        loginTypeStrategyKeyMap.put(3, User.userLoginStrategyKeyEnum.LOGIN_TYPE_WE_CHAT_OPEN_ID.getKey());
-
-        loginPlatformStrategyKey = loginPlatformStrategyKeyMap.get(loginPlatform);
-        if (StringUtils.isBlank(loginPlatformStrategyKey)) {
-            return ResponseObject.failure("获取登录平台参数异常");
+    private String getUserToken(Long invalidTime, Long userId) {
+        ResponseObject<String> userTokenResponseObject = authUserFeign.generateUserToken(invalidTime, userId);
+        log.info("调用服务端接口[获取token],返回的响应数据为:{}", JsonUtils.object2Json(userTokenResponseObject));
+        if ((null == userTokenResponseObject) || (!userTokenResponseObject.getCode().equals(HttpStatus.OK.value()))) {
+            throw new BusinessException("获取token失败!");
         }
+        return userTokenResponseObject.getData();
+    }
 
-        loginTypeStrategyKey = loginTypeStrategyKeyMap.get(loginType);
-        if (StringUtils.isBlank(loginTypeStrategyKey)) {
-            return ResponseObject.failure("获取登录方式参数异常");
-        }
-        return ResponseObject.success(loginPlatformStrategyKey + loginTypeStrategyKey);
+    /**
+     * 根据登录端获取token过期时间
+     *
+     * @param loginPlatform 登录端 1-pc 2-app 3-小程序
+     * @return Long(毫秒值)
+     */
+    private Long getUserTokenExpirationDate(Integer loginPlatform) {
+        return 183 * 24 * 60 * 60 * 1000L;
     }
 
 }

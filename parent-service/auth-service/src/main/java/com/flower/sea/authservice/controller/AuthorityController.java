@@ -32,7 +32,7 @@ public class AuthorityController {
 
     @GetMapping("/generateUserToken")
     @ApiOperation(value = "生成用户token")
-    public ResponseObject generateUserToken(@ApiParam(value = "token过期时间,毫秒值", required = true) @RequestParam Long invalidTime,
+    public ResponseObject<String> generateUserToken(@ApiParam(value = "token过期时间,毫秒值", required = true) @RequestParam Long invalidTime,
                                             @ApiParam(value = "用户id", required = true) @RequestParam Long userId) {
         return authorityService.generateUserToken(invalidTime, userId);
     }

@@ -2,7 +2,7 @@ package com.flower.sea.userservice.service;
 
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
-import com.flower.sea.userservice.dto.in.UserLoginDTO;
+import org.springframework.validation.BindingResult;
 
 /**
  * @author zhangLei
@@ -18,28 +18,21 @@ public interface IUserCentreService {
      */
     ResponseObject getWeChatOpenId(String weChatCode);
 
-    /**
-     * 用户登录
-     *
-     * @param userLoginDTO 用户登录参数DTO
-     * @return ResponseObject
-     */
-    ResponseObject login(UserLoginDTO userLoginDTO);
-
-    /**
-     * 用户登录公共封装方法
-     *
-     * @param userId        用户id
-     * @param loginPlatform 用户登录平台
-     * @return ResponseObject
-     */
-    ResponseObject userLoginEncapsulation(Long userId, Integer loginPlatform);
 
     /**
      * 第三方绑定用户
      *
      * @param thirdPartyBindingUserDTO 第三方绑定用户参数DTO
+     * @param bindingResult            bindingResult
      * @return ResponseObject
      */
-    ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO);
+    ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO, BindingResult bindingResult);
+
+    /**
+     * 微信小程序登录
+     *
+     * @param weChatOpenId 微信的openId
+     * @return ResponseObject
+     */
+    ResponseObject weChatAppletLogin(String weChatOpenId);
 }

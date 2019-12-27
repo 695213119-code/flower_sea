@@ -86,9 +86,9 @@ public class User extends Model<User> {
         USER_DISABLE(2, "该用户已经被禁用"),
 
         /**
-         * 用户未绑定手机号/未在数据中进行关联
+         * 微信未绑定用户
          */
-        USER_DOES_NOT_BIND_THE_PHONE(1000, "用户未绑定手机号!");
+        WECHAT_UNBOUND_USER(1000, "该微信未绑定用户!");
 
         private Integer code;
 

@@ -74,6 +74,13 @@ public class ResponseObject<T> {
     }
 
 
+    /**
+     * 业务异常返回,默认状态码为:600
+     *
+     * @param message 返回的提示消息
+     * @param <S>     类型
+     * @return ResponseObject<S>
+     */
     public static <S> ResponseObject<S> businessFailure(String message) {
         ResponseObject<S> responseObject = new ResponseObject<>();
         responseObject.code = SystemEnumeration.BUSINESS_EXCEPTION.getCode();

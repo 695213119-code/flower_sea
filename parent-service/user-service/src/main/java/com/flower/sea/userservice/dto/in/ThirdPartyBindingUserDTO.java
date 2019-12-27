@@ -39,6 +39,4 @@ public class ThirdPartyBindingUserDTO implements Serializable {
 
     @ApiModelProperty(value = "第三方用户头像")
     private String avatar;
-
-
 }

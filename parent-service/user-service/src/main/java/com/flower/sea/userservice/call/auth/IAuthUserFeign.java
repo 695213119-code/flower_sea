@@ -24,8 +24,8 @@ public interface IAuthUserFeign {
      * @return ResponseObject
      */
     @GetMapping(API_AUTH + "/generateUserToken")
-    ResponseObject generateUserToken(@RequestParam(value = "invalidTime") Long invalidTime,
-                                     @RequestParam(value = "userId") Long userId);
+    ResponseObject<String> generateUserToken(@RequestParam(value = "invalidTime") Long invalidTime,
+                                             @RequestParam(value = "userId") Long userId);
 
 
 }

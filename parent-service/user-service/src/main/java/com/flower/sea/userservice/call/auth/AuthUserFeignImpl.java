@@ -14,7 +14,7 @@ public class AuthUserFeignImpl implements IAuthUserFeign {
 
 
     @Override
-    public ResponseObject generateUserToken(Long invalidTime, Long userId) {
+    public ResponseObject<String> generateUserToken(Long invalidTime, Long userId) {
         log.error("调用服务[auth-service],接口[generateUserToken]失败");
         return null;
     }
