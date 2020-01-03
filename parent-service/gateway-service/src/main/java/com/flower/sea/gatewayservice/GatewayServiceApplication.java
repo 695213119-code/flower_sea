@@ -8,11 +8,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * 网关
+ * 此处扫描interface模块的feign接口
  *
  * @author zhangLei
  * @serial 2019-11-5
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.flower.sea.gatewayservice","com.flower.sea.interfaceservice"})
 @EnableZuulProxy
 @EnableEurekaClient
 @EnableFeignClients

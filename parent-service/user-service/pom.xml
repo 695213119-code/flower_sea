@@ -38,6 +38,11 @@
             <artifactId>starter-custom-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.flower.sea</groupId>
+            <artifactId>interface-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <!-- eureka客户端-->
         <dependency>

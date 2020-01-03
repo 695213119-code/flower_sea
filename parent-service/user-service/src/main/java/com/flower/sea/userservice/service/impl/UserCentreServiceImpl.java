@@ -11,7 +11,7 @@ import com.flower.sea.commonservice.utils.RedisUtils;
 import com.flower.sea.entityservice.user.User;
 import com.flower.sea.entityservice.user.UserExtra;
 import com.flower.sea.entityservice.user.UserThirdparty;
-import com.flower.sea.userservice.call.auth.IAuthUserFeign;
+import com.flower.sea.interfaceservice.authentication.IAuthorityCallInterface;
 import com.flower.sea.userservice.constant.PlatformConstant;
 import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
 import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
@@ -25,7 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,24 +42,23 @@ public class UserCentreServiceImpl implements IUserCentreService {
 
     private final IUserService userService;
     private final IUserExtraService userExtraService;
-    private final IAuthUserFeign authUserFeign;
     private final RedisUtils redisUtils;
     private final IUserThirdpartyService thirdpartyService;
     private final IUserThirdpartyService userThirdpartyService;
+    private final IAuthorityCallInterface authorityInterface;
 
     @Autowired
     public UserCentreServiceImpl(
             IUserService userService,
             IUserExtraService userExtraService,
-            @Qualifier("IAuthUserFeign") IAuthUserFeign authUserFeign,
             RedisUtils redisUtils,
-            IUserThirdpartyService thirdpartyService, IUserThirdpartyService userThirdpartyService) {
+            IUserThirdpartyService thirdpartyService, IUserThirdpartyService userThirdpartyService, IAuthorityCallInterface authorityInterface) {
         this.userService = userService;
         this.userExtraService = userExtraService;
-        this.authUserFeign = authUserFeign;
         this.redisUtils = redisUtils;
         this.thirdpartyService = thirdpartyService;
         this.userThirdpartyService = userThirdpartyService;
+        this.authorityInterface = authorityInterface;
     }
 
     @Override
@@ -265,7 +263,7 @@ public class UserCentreServiceImpl implements IUserCentreService {
      * @return String
      */
     private String getUserToken(Long invalidTime, Long userId) {
-        ResponseObject<String> userTokenResponseObject = authUserFeign.generateUserToken(invalidTime, userId);
+        ResponseObject<String> userTokenResponseObject = authorityInterface.generateUserToken(invalidTime, userId);
         log.info("调用服务端接口[获取token],返回的响应数据为:{}", JsonUtils.object2Json(userTokenResponseObject));
         if ((null == userTokenResponseObject) || (!userTokenResponseObject.getCode().equals(HttpStatus.OK.value()))) {
             throw new BusinessException("获取token失败!");

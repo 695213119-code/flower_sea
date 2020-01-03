@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * @serial 2019/11/13
  */
 @RestController
-@RequestMapping("/api/user")
+    @RequestMapping("/api/user")
 @Api(tags = "用户模块")
 @ApiMenuAnnotation(name = "用户模块")
 public class UserCentreController {
@@ -42,7 +42,7 @@ public class UserCentreController {
     @GetMapping("/weChatAppletLogin")
     @ApiOperation(value = "微信小程序登录", response = UserLoginResponseDTO.class)
     @AuthorityAnnotation(isToken = false)
-    public ResponseObject weChatAppletLogin(@ApiParam(value = "微信的openId", required = true) @RequestParam String weChatOpenId) {
+        public ResponseObject weChatAppletLogin(@ApiParam(value = "微信的openId", required = true) @RequestParam String weChatOpenId) {
         return userCentreService.weChatAppletLogin(weChatOpenId);
     }
 

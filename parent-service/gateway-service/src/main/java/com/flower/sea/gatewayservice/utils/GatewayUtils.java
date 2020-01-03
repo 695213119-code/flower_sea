@@ -1,6 +1,6 @@
 package com.flower.sea.gatewayservice.utils;
 
-import com.flower.sea.gatewayservice.vo.Gateway;
+import com.flower.sea.interfaceservice.authentication.dto.Gateway;
 
 /**
  * 网关工具类

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author zhangLei
  * @serial 2019/11/13
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.flower.sea.userservice","com.flower.sea.interfaceservice"})
 @EnableEurekaClient
 @EnableHystrix
 @MapperScan(value = {"com.flower.sea.userservice.user.mapper"})

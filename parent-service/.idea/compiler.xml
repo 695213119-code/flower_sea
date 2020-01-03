@@ -8,13 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-service" />
         <module name="gateway-service" />
-        <module name="core-service" />
         <module name="generate-service" />
+        <module name="interface-service" />
+        <module name="core-service" />
+        <module name="entity-service" />
         <module name="user-service" />
-        <module name="common-service" />
         <module name="auth-service" />
         <module name="data-base-service" />
-        <module name="entity-service" />
+        <module name="common-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -35,6 +36,7 @@
       <module name="eurka-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
       <module name="generate-service" options="-parameters" />
+      <module name="interface-service" options="-parameters" />
       <module name="middleware-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>

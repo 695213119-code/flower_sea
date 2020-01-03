@@ -6,16 +6,15 @@ import cn.hutool.core.util.ObjectUtil;
 import com.flower.sea.commonservice.constant.AuthorityConstant;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.JsonUtils;
-import com.flower.sea.gatewayservice.call.auth.IAuthGatewayFeign;
 import com.flower.sea.gatewayservice.utils.GatewayUtils;
 import com.flower.sea.gatewayservice.utils.GsonUtils;
-import com.flower.sea.gatewayservice.vo.Gateway;
+import com.flower.sea.interfaceservice.authentication.IAuthorityCallInterface;
+import com.flower.sea.interfaceservice.authentication.dto.Gateway;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -39,15 +38,15 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 @Slf4j
 public class AuthFilter extends ZuulFilter {
 
-    private final IAuthGatewayFeign authGatewayFeign;
+    private final IAuthorityCallInterface authorityInterface;
     private final HttpSession session;
 
     @Value("${swagger.allow}")
     private boolean allow;
 
     @Autowired
-    public AuthFilter(@Qualifier("IAuthGatewayFeign") IAuthGatewayFeign authGatewayFeign, HttpSession session) {
-        this.authGatewayFeign = authGatewayFeign;
+    public AuthFilter(IAuthorityCallInterface authorityInterface, HttpSession session) {
+        this.authorityInterface = authorityInterface;
         this.session = session;
     }
 
@@ -91,7 +90,7 @@ public class AuthFilter extends ZuulFilter {
         log.info("获取到的请求URI======>:{}", requestUrl);
 
         Gateway gateway = GatewayUtils.getGateway(requestUrl);
-        ResponseObject verificationIsToken = authGatewayFeign.verificationIsToken(gateway);
+        ResponseObject verificationIsToken = authorityInterface.verificationIsToken(gateway);
         if (ObjectUtil.isNull(verificationIsToken) || HttpStatus.OK.value() != verificationIsToken.getCode()) {
             failureRequest(currentContext, ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "无效的请求"));
             return null;
@@ -105,7 +104,7 @@ public class AuthFilter extends ZuulFilter {
                 return null;
             }
             //验证token的合法性
-            ResponseObject verificationTokenIsCorrect = authGatewayFeign.verificationTokenIsCorrect(token);
+            ResponseObject verificationTokenIsCorrect = authorityInterface.verificationTokenIsCorrect(token);
             if (ObjectUtil.isNull(verificationTokenIsCorrect) || HttpStatus.OK.value() != verificationTokenIsCorrect.getCode()) {
                 failureRequest(currentContext, ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "无效的Token"));
                 return null;

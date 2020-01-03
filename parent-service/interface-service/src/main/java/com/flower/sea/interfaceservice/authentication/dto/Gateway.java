@@ -1,16 +1,13 @@
-package com.flower.sea.gatewayservice.vo;
+package com.flower.sea.interfaceservice.authentication.dto;
 
 import lombok.Data;
 
 /**
- * 验证参数类
- *
  * @author zhangLei
- * @serial 2019/11/13
+ * @serial 2020-01-03
  */
 @Data
 public class Gateway {
-
     /**
      * 服务名称
      */

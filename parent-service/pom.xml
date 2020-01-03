@@ -27,6 +27,7 @@
         <module>data-base-service</module>
         <module>entity-service</module>
         <module>generate-service</module>
+        <module>interface-service</module>
         <module>auth-service</module>
         <module>core-service</module>
         <module>user-service</module>
