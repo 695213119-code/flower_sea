@@ -1,7 +1,7 @@
 package com.flower.sea.authservice.mapper;
 
 import com.flower.sea.authservice.pojo.bo.verification.ApiBO;
-import com.flower.sea.authservice.pojo.bo.verification.Gateway;
+import com.flower.sea.authservice.pojo.bo.verification.GatewayBO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +18,5 @@ public interface AuthorityMapper {
      * @param gateway 参数类
      * @return ApiBO
      */
-    ApiBO findApi(@Param("gateway") Gateway gateway);
+    ApiBO findApi(@Param("gateway") GatewayBO gateway);
 }

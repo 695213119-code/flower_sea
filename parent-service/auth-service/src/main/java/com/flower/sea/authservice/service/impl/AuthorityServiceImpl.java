@@ -12,7 +12,7 @@ import com.flower.sea.authservice.pojo.bo.authentication.AuthorityApp;
 import com.flower.sea.authservice.pojo.bo.authentication.AuthorityMenu;
 import com.flower.sea.authservice.pojo.bo.token.JwtTokenBO;
 import com.flower.sea.authservice.pojo.bo.verification.ApiBO;
-import com.flower.sea.authservice.pojo.bo.verification.Gateway;
+import com.flower.sea.authservice.pojo.bo.verification.GatewayBO;
 import com.flower.sea.authservice.pojo.dto.out.AuthOut;
 import com.flower.sea.authservice.pojo.dto.out.JwtTokenOut;
 import com.flower.sea.authservice.service.IAuthorityService;
@@ -29,7 +29,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -90,11 +89,8 @@ public class AuthorityServiceImpl implements IAuthorityService {
     }
 
     @Override
-    public ResponseObject verificationIsToken(Gateway gateway, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return ResponseObject.failure(HttpStatus.BAD_REQUEST.value(), bindingResult.getAllErrors().get(0).getDefaultMessage());
-        }
-        ApiBO api = authorityMapper.findApi(gateway);
+    public ResponseObject verificationIsToken(String serviceName, String url) {
+        ApiBO api = authorityMapper.findApi(new GatewayBO(serviceName, url));
         if (ObjectUtil.isNull(api)) {
             return ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "无效的请求");
         }

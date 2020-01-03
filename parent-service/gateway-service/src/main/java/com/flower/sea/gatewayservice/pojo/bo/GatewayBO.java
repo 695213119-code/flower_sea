@@ -1,4 +1,4 @@
-package com.flower.sea.interfaceservice.authentication.dto;
+package com.flower.sea.gatewayservice.pojo.bo;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import lombok.Data;
  * @serial 2020-01-03
  */
 @Data
-public class Gateway {
+public class GatewayBO {
     /**
      * 服务名称
      */

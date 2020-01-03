@@ -1,9 +1,7 @@
 package com.flower.sea.interfaceservice.authentication.fallback;
 
 import com.flower.sea.commonservice.recurrence.ResponseObject;
-import com.flower.sea.commonservice.utils.JsonUtils;
 import com.flower.sea.interfaceservice.authentication.IAuthorityCallInterface;
-import com.flower.sea.interfaceservice.authentication.dto.Gateway;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +21,11 @@ public class AuthorityCallInterfaceImpl implements IAuthorityCallInterface {
     }
 
     @Override
-    public ResponseObject verificationIsToken(Gateway gateway) {
-        log.error("调用服务[鉴权服务-->auth-service],接口[校验接口是否需要token验证-->verificationIsToken]失败,入参:{}", JsonUtils.object2Json(gateway));
+    public ResponseObject verificationIsToken(String serviceName, String url) {
+        log.error("调用服务[鉴权服务-->auth-service],接口[校验接口是否需要token验证-->verificationIsToken]失败,入参:[serviceName:{},url:{}]", serviceName, url);
         return null;
     }
+
 
     @Override
     public ResponseObject verificationTokenIsCorrect(String userToken) {

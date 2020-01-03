@@ -4,29 +4,23 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="update 修改微信小程序的登录接口">
-      <change afterPath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/dto/Gateway.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/fallback/AuthorityCallInterfaceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clearLastUpdated.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/core-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/AuthServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/AuthServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/controller/AuthorityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/controller/AuthorityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/mapper/AuthorityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/mapper/AuthorityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/pojo/bo/verification/Gateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/pojo/bo/verification/GatewayBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/IAuthorityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/IAuthorityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/impl/AuthorityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/flower/sea/authservice/service/impl/AuthorityServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/GatewayServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/GatewayServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/call/auth/AuthGatewayFeignImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/call/auth/IAuthGatewayFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/IAuthorityCallInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/filter/AuthFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/utils/GatewayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/utils/GatewayUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/vo/Gateway.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/interface-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/IAuthorityCallInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/IAuthorityCallInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/dto/Gateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/com/flower/sea/gatewayservice/pojo/bo/GatewayBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/fallback/AuthorityCallInterfaceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/fallback/AuthorityCallInterfaceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/UserServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/AuthUserFeignImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/call/auth/IAuthUserFeign.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -356,7 +350,7 @@
       <workItem from="1578048075818" duration="56000" />
       <workItem from="1578048162444" duration="95000" />
       <workItem from="1578048308342" duration="82000" />
-      <workItem from="1578052889600" duration="6492000" />
+      <workItem from="1578052889600" duration="14678000" />
     </task>
     <task id="LOCAL-00001" summary="提交父级项目">
       <created>1572934125567</created>
@@ -617,7 +611,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577438346115</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="update&#10;1.添加interface-service模块,抽取公共的feign接口&#10;2.修改之前的调用代码">
+      <created>1578060329489</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1578060329489</updated>
+    </task>
+    <task id="LOCAL-00039" summary="update&#10;1.添加interface-service模块,抽取公共的feign接口&#10;2.修改之前的调用代码">
+      <created>1578060361221</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1578060361221</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,6 +676,7 @@
     <MESSAGE value="add 添加https工具类 和list集合排序工具类" />
     <MESSAGE value="add 修改项目的整体结构" />
     <MESSAGE value="update 修改微信小程序的登录接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 修改微信小程序的登录接口" />
+    <MESSAGE value="update&#10;1.添加interface-service模块,抽取公共的feign接口&#10;2.修改之前的调用代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="update&#10;1.添加interface-service模块,抽取公共的feign接口&#10;2.修改之前的调用代码" />
   </component>
 </project>

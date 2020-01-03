@@ -11,17 +11,20 @@ import javax.validation.constraints.NotBlank;
  * @serial 2019/11/13
  */
 @Data
-public class Gateway {
+public class GatewayBO {
 
     /**
      * 服务名称
      */
-    @NotBlank(message = "服务名称[serviceName]不能为空")
     private String serviceName;
 
     /**
      * 请求路径
      */
-    @NotBlank(message = "请求路径[url]不能为空")
     private String url;
+
+    public GatewayBO(String serviceName, String url) {
+        this.serviceName = serviceName;
+        this.url = url;
+    }
 }

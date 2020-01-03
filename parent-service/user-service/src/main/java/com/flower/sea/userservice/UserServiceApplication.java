@@ -19,7 +19,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 @EnableHystrix
 @MapperScan(value = {"com.flower.sea.userservice.user.mapper"})
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.flower.sea.interfaceservice"})
 public class UserServiceApplication {
 
     public static void main(String[] args) {

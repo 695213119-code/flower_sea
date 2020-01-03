@@ -6,10 +6,10 @@ import cn.hutool.core.util.ObjectUtil;
 import com.flower.sea.commonservice.constant.AuthorityConstant;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.JsonUtils;
+import com.flower.sea.gatewayservice.pojo.bo.GatewayBO;
 import com.flower.sea.gatewayservice.utils.GatewayUtils;
 import com.flower.sea.gatewayservice.utils.GsonUtils;
 import com.flower.sea.interfaceservice.authentication.IAuthorityCallInterface;
-import com.flower.sea.interfaceservice.authentication.dto.Gateway;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
@@ -89,8 +89,8 @@ public class AuthFilter extends ZuulFilter {
         String requestUrl = request.getRequestURI();
         log.info("获取到的请求URI======>:{}", requestUrl);
 
-        Gateway gateway = GatewayUtils.getGateway(requestUrl);
-        ResponseObject verificationIsToken = authorityInterface.verificationIsToken(gateway);
+        GatewayBO gateway = GatewayUtils.getGateway(requestUrl);
+        ResponseObject verificationIsToken = authorityInterface.verificationIsToken(gateway.getServiceName(), gateway.getUrl());
         if (ObjectUtil.isNull(verificationIsToken) || HttpStatus.OK.value() != verificationIsToken.getCode()) {
             failureRequest(currentContext, ResponseObject.failure(HttpStatus.UNAUTHORIZED.value(), "无效的请求"));
             return null;

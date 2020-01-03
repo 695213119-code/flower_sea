@@ -13,10 +13,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author zhangLei
  * @serial 2019-11-5
  */
-@SpringBootApplication(scanBasePackages = {"com.flower.sea.gatewayservice","com.flower.sea.interfaceservice"})
+@SpringBootApplication(scanBasePackages = {"com.flower.sea.gatewayservice", "com.flower.sea.interfaceservice"})
 @EnableZuulProxy
 @EnableEurekaClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.flower.sea.interfaceservice"})
 public class GatewayServiceApplication {
 
     public static void main(String[] args) {
