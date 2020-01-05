@@ -1,5 +1,6 @@
 package com.flower.sea.userservice.dto.out.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -30,9 +31,11 @@ public class UserLoginResponseDTO {
     private Integer gender;
 
     @ApiModelProperty(value = "用户生日(农历)")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDateTime birth;
 
     @ApiModelProperty(value = "用户下一次的生日时间(阳历)")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDateTime birthAnother;
 
 }
