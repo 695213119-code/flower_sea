@@ -8,14 +8,19 @@ import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.commonservice.utils.IdUtils;
 import com.flower.sea.commonservice.utils.JsonUtils;
 import com.flower.sea.commonservice.utils.RedisUtils;
+import com.flower.sea.commonservice.utils.UserUtils;
 import com.flower.sea.entityservice.user.User;
 import com.flower.sea.entityservice.user.UserExtra;
 import com.flower.sea.entityservice.user.UserThirdparty;
 import com.flower.sea.interfaceservice.authentication.IAuthorityCallInterface;
+import com.flower.sea.userservice.async.UserAsync;
 import com.flower.sea.userservice.constant.PlatformConstant;
 import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
+import com.flower.sea.userservice.dto.in.WeChatAppletLoginDTO;
+import com.flower.sea.userservice.dto.out.user.UserDetailsDTO;
 import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
 import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
+import com.flower.sea.userservice.mapper.UserCentreMapper;
 import com.flower.sea.userservice.service.IUserCentreService;
 import com.flower.sea.userservice.user.service.IUserExtraService;
 import com.flower.sea.userservice.user.service.IUserService;
@@ -27,7 +32,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
 import java.util.concurrent.TimeUnit;
@@ -46,19 +50,27 @@ public class UserCentreServiceImpl implements IUserCentreService {
     private final IUserThirdpartyService thirdpartyService;
     private final IUserThirdpartyService userThirdpartyService;
     private final IAuthorityCallInterface authorityInterface;
+    private final UserAsync userAsync;
+    private final UserUtils userUtils;
+    private final UserCentreMapper userCentreMapper;
 
     @Autowired
     public UserCentreServiceImpl(
             IUserService userService,
             IUserExtraService userExtraService,
             RedisUtils redisUtils,
-            IUserThirdpartyService thirdpartyService, IUserThirdpartyService userThirdpartyService, IAuthorityCallInterface authorityInterface) {
+            IUserThirdpartyService thirdpartyService,
+            IUserThirdpartyService userThirdpartyService,
+            IAuthorityCallInterface authorityInterface, UserAsync userAsync, UserUtils userUtils, UserCentreMapper userCentreMapper) {
         this.userService = userService;
         this.userExtraService = userExtraService;
         this.redisUtils = redisUtils;
         this.thirdpartyService = thirdpartyService;
         this.userThirdpartyService = userThirdpartyService;
         this.authorityInterface = authorityInterface;
+        this.userAsync = userAsync;
+        this.userUtils = userUtils;
+        this.userCentreMapper = userCentreMapper;
     }
 
     @Override
@@ -73,7 +85,6 @@ public class UserCentreServiceImpl implements IUserCentreService {
     }
 
 
-    @Transactional(rollbackFor = BusinessException.class)
     @Override
     public ResponseObject thirdPartyBindingUser(ThirdPartyBindingUserDTO thirdPartyBindingUserDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -103,13 +114,24 @@ public class UserCentreServiceImpl implements IUserCentreService {
     }
 
     @Override
-    public ResponseObject weChatAppletLogin(String weChatOpenId) {
+    public ResponseObject weChatAppletLogin(WeChatAppletLoginDTO weChatAppletLoginDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseObject.businessFailure(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
         //判断该微信号是否绑定了用户
-        UserThirdparty userThirdparty = userThirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", weChatOpenId));
+        UserThirdparty userThirdparty = userThirdpartyService.selectOne(new EntityWrapper<UserThirdparty>().eq("union_id", weChatAppletLoginDTO.getWeChatOpenId()));
         if (null == userThirdparty) {
             return ResponseObject.failure(User.UserEnum.WECHAT_UNBOUND_USER.getCode(), User.UserEnum.WECHAT_UNBOUND_USER.getMessage());
         }
+        //异步同步用户的微信数据
+        userAsync.synchronizationUserWeChatData(weChatAppletLoginDTO, userThirdparty.getId());
         return userLoginEncapsulation(userThirdparty.getUserId(), PlatformConstant.LOGIN_PLATFORM_SMALL_PROGRAM);
+    }
+
+    @Override
+    public ResponseObject getUserDetails() {
+        UserDetailsDTO userDetails = userCentreMapper.getUserDetails(userUtils.getUserId());
+        return ResponseObject.success(userDetails);
     }
 
     /**
@@ -214,24 +236,9 @@ public class UserCentreServiceImpl implements IUserCentreService {
         userLoginResponse.setUserToken(userToken);
         //操作对应用户的redis
         operationCorrespondingUserRedis(user.getId(), loginPlatform, user, invalidTime, userToken);
-        //获取用户的详细数据
-        userDetailed(userLoginResponse, user.getId());
         return ResponseObject.success(userLoginResponse);
     }
 
-    /**
-     * 获取用户登录时的详情
-     *
-     * @param userLoginResponse 用户数据返回类
-     * @param userId            用户id
-     */
-    private void userDetailed(UserLoginResponseDTO userLoginResponse, Long userId) {
-        UserExtra userExtra = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", userId).
-                eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
-        if (null != userExtra) {
-            BeanUtils.copyProperties(userExtra, userLoginResponse);
-        }
-    }
 
     /**
      * 操作对应用户的redis
@@ -245,11 +252,12 @@ public class UserCentreServiceImpl implements IUserCentreService {
     private void operationCorrespondingUserRedis(Long userId, Integer loginPlatform, User user, Long invalidTime, String userToken) {
         //根据(固定头部_用户id_登录平台)组成redis的key
         final String userLoginRedisHead = "user_login_redis_head";
-        String userIdLoginPlatformRedisKey = userLoginRedisHead + "-" + userId + "-" + loginPlatform;
+        String userIdLoginPlatformRedisKey = userLoginRedisHead + "_" + userId + "_" + loginPlatform;
         //保存本次的token之前必须删除上一次的token,(一个账号在同一个端只能在一处登录)
         String userOldToken = redisUtils.get(userIdLoginPlatformRedisKey);
         if (StringUtils.isNotBlank(userOldToken)) {
             redisUtils.delete(userOldToken);
+            redisUtils.delete(userIdLoginPlatformRedisKey);
         }
         redisUtils.set(userToken, JsonUtils.object2Json(user), invalidTime, TimeUnit.MILLISECONDS);
         redisUtils.set(userIdLoginPlatformRedisKey, userToken, invalidTime, TimeUnit.MILLISECONDS);

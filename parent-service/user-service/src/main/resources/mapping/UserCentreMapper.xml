@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flower.sea.userservice.mapper.UserCentreMapper">
+
+    <select id="getUserDetails" resultType="com.flower.sea.userservice.dto.out.user.UserDetailsDTO">
+        SELECT
+        flowerSeaUser.phone AS phone,
+        flowerSeaUser.user_name AS userName,
+        flowerSeaUserExtra.nick_name AS nickName,
+        flowerSeaUserExtra.avatar AS avatar,
+        flowerSeaUserExtra.age AS age,
+        flowerSeaUserExtra.gender AS gender,
+        flowerSeaUserExtra.birth AS birth,
+        flowerSeaUserExtra.birth_another AS birthAnother,
+        flowerSeaUserExtra.email AS email
+        FROM
+        `flower_sea_user` AS flowerSeaUser
+        LEFT JOIN flower_sea_user_extra AS flowerSeaUserExtra ON flowerSeaUserExtra.user_id = flowerSeaUser.id
+        <where>
+            flowerSeaUser.is_deleted = 2
+            AND flowerSeaUserExtra.is_deleted = 2
+            AND flowerSeaUser.id = #{userId}
+        </where>
+    </select>
+</mapper>

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class AuthorityCallInterfaceImpl implements IAuthorityCallInterface {
+
     @Override
     public ResponseObject<String> generateUserToken(Long invalidTime, Long userId) {
         log.error("调用服务[鉴权服务-->auth-service],接口[生成用户token-->generateUserToken]失败,入参:[invalidTime:{},userId:{}]", invalidTime, userId);
@@ -25,7 +26,6 @@ public class AuthorityCallInterfaceImpl implements IAuthorityCallInterface {
         log.error("调用服务[鉴权服务-->auth-service],接口[校验接口是否需要token验证-->verificationIsToken]失败,入参:[serviceName:{},url:{}]", serviceName, url);
         return null;
     }
-
 
     @Override
     public ResponseObject verificationTokenIsCorrect(String userToken) {

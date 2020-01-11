@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31058060-5bad-4a30-bfa5-2ac49d1086e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/TokenUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/flower/sea/commonservice/utils/UserUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/async/UserAsync.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/user/UserDetailsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/mapper/UserCentreMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/mapping/UserCentreMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/UserThirdparty.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity-service/src/main/java/com/flower/sea/entityservice/user/UserThirdparty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/IAuthorityCallInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/IAuthorityCallInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/fallback/AuthorityCallInterfaceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/interface-service/src/main/java/com/flower/sea/interfaceservice/authentication/fallback/AuthorityCallInterfaceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/UserServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/controller/UserCentreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/ThirdPartyBindingUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/ThirdPartyBindingUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/UserLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/in/WeChatAppletLoginDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/user/UserLoginResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/dto/out/user/UserLoginResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/IUserCentreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/service/impl/UserCentreServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WeChatUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/flower/sea/userservice/utils/WeChatUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +41,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -68,12 +84,10 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\call\auth" />
-      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\resources\mapping" />
-      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\service\impl" />
-      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\service" />
-      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\mapper" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping" />
+      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping\" />
+      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.flower.sea.commonservice.utils" />
@@ -82,10 +96,12 @@
       <recent name="com.flower.sea.authservice.pojo.bo.verification" />
       <recent name="com.flower.sea.userservice" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping" />
-      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources\mapping\" />
-      <recent name="E:\zl\flower_sea\parent-service\auth-service\src\main\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\call\auth" />
+      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\resources\mapping" />
+      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\service\impl" />
+      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\service" />
+      <recent name="D:\working\flower_sea\parent-service\user-service\src\main\java\com\flower\sea\userservice\user\mapper" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -100,7 +116,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -340,7 +356,10 @@
       <workItem from="1578048162444" duration="95000" />
       <workItem from="1578048308342" duration="82000" />
       <workItem from="1578052889600" duration="24944000" />
-      <workItem from="1578155601128" duration="4055000" />
+      <workItem from="1578155601128" duration="4210000" />
+      <workItem from="1578224717182" duration="751000" />
+      <workItem from="1578485141755" duration="768000" />
+      <workItem from="1578726918534" duration="11944000" />
     </task>
     <task id="LOCAL-00001" summary="提交父级项目">
       <created>1572934125567</created>
@@ -622,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578071495918</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="update 添加时间返回格式注解">
+      <created>1578213417107</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1578213417107</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,6 +701,7 @@
     <MESSAGE value="update 修改微信小程序的登录接口" />
     <MESSAGE value="update&#10;1.添加interface-service模块,抽取公共的feign接口&#10;2.修改之前的调用代码" />
     <MESSAGE value="update&#10;1.增加feign的接口扫描,解决无法调用服务的问题&#10;2.优化一部分代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="update&#10;1.增加feign的接口扫描,解决无法调用服务的问题&#10;2.优化一部分代码" />
+    <MESSAGE value="update 添加时间返回格式注解" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 添加时间返回格式注解" />
   </component>
 </project>

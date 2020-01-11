@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * 用户
@@ -18,7 +17,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication(scanBasePackages = {"com.flower.sea.userservice","com.flower.sea.interfaceservice"})
 @EnableEurekaClient
 @EnableHystrix
-@MapperScan(value = {"com.flower.sea.userservice.user.mapper"})
+@EnableAsync
+@MapperScan(value = {"com.flower.sea.userservice.user.mapper","com.flower.sea.userservice.mapper"})
 @EnableFeignClients(basePackages = {"com.flower.sea.interfaceservice"})
 public class UserServiceApplication {
 

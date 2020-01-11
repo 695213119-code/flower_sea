@@ -31,8 +31,7 @@ import lombok.EqualsAndHashCode;
 public class UserThirdparty extends Model<UserThirdparty> {
 
     private static final long serialVersionUID = 1L;
-
-
+    
     @ApiModelProperty(value = "主键id")
     private Long id;
 
@@ -59,6 +58,18 @@ public class UserThirdparty extends Model<UserThirdparty> {
 
     @ApiModelProperty(value = "第三方用户头像")
     private String avatar;
+
+    @ApiModelProperty(value = "第三方用户的城市")
+    private String city;
+
+    @ApiModelProperty(value = "第三方用户的国家")
+    private String country;
+
+    @ApiModelProperty(value = "第三方用户的使用语言")
+    private String language;
+
+    @ApiModelProperty(value = "第三方用户的省份")
+    private String province;
 
     @ApiModelProperty(value = "创建者")
     @TableField("create_by")

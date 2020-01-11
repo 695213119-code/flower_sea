@@ -2,6 +2,7 @@ package com.flower.sea.userservice.service;
 
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
+import com.flower.sea.userservice.dto.in.WeChatAppletLoginDTO;
 import org.springframework.validation.BindingResult;
 
 /**
@@ -17,7 +18,7 @@ public interface IUserCentreService {
      * @return ResponseObject
      */
     ResponseObject getWeChatOpenId(String weChatCode);
-    
+
     /**
      * 第三方绑定用户
      *
@@ -30,8 +31,16 @@ public interface IUserCentreService {
     /**
      * 微信小程序登录
      *
-     * @param weChatOpenId 微信的openId
+     * @param weChatAppletLoginDTO 微信小程序登录参数DTO
+     * @param bindingResult        bindingResult
      * @return ResponseObject
      */
-    ResponseObject weChatAppletLogin(String weChatOpenId);
+    ResponseObject weChatAppletLogin(WeChatAppletLoginDTO weChatAppletLoginDTO, BindingResult bindingResult);
+
+    /**
+     * 根据token获取用户详情
+     *
+     * @return ResponseObject
+     */
+    ResponseObject getUserDetails();
 }

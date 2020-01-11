@@ -3,7 +3,6 @@ package com.flower.sea.interfaceservice.authentication;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.interfaceservice.authentication.fallback.AuthorityCallInterfaceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +33,7 @@ public interface IAuthorityCallInterface {
      * 验证该请求是否需要验证
      *
      * @param serviceName 服务名称
-     * @param url 请求的url
+     * @param url         请求的url
      * @return ResponseObject
      */
     @PostMapping(API_AUTH + "/verificationIsToken")

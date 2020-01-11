@@ -148,5 +148,4 @@ public class WeChatUtils {
         }
         return wechatCallback;
     }
-
 }
