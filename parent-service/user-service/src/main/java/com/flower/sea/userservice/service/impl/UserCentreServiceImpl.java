@@ -5,18 +5,16 @@ import com.flower.sea.commonservice.constant.CommonConstant;
 import com.flower.sea.commonservice.exception.BusinessException;
 import com.flower.sea.commonservice.exception.DbOperationException;
 import com.flower.sea.commonservice.recurrence.ResponseObject;
-import com.flower.sea.commonservice.utils.IdUtils;
-import com.flower.sea.commonservice.utils.JsonUtils;
-import com.flower.sea.commonservice.utils.RedisUtils;
-import com.flower.sea.commonservice.utils.UserUtils;
+import com.flower.sea.commonservice.utils.*;
 import com.flower.sea.entityservice.user.User;
 import com.flower.sea.entityservice.user.UserExtra;
 import com.flower.sea.entityservice.user.UserThirdparty;
 import com.flower.sea.interfaceservice.authentication.IAuthorityCallInterface;
 import com.flower.sea.userservice.async.UserAsync;
 import com.flower.sea.userservice.constant.PlatformConstant;
-import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
-import com.flower.sea.userservice.dto.in.WeChatAppletLoginDTO;
+import com.flower.sea.userservice.dto.in.user.EditUserInfoDTO;
+import com.flower.sea.userservice.dto.in.user.ThirdPartyBindingUserDTO;
+import com.flower.sea.userservice.dto.in.user.WeChatAppletLoginDTO;
 import com.flower.sea.userservice.dto.out.user.UserDetailsDTO;
 import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
 import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
@@ -34,6 +32,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -131,7 +131,80 @@ public class UserCentreServiceImpl implements IUserCentreService {
     @Override
     public ResponseObject getUserDetails() {
         UserDetailsDTO userDetails = userCentreMapper.getUserDetails(userUtils.getUserId());
+        if (null != userDetails) {
+            //计算生日的天数间隔
+            userDetails.setBirthdayDays(DateUtils.getDaysBetween(new Date(), LocalDateTimeUtils.convertLDTToDate(userDetails.getBirthAnother())));
+        }
         return ResponseObject.success(userDetails);
+    }
+
+    @Override
+    public ResponseObject editUserInfo(EditUserInfoDTO editUserInfoDTO) {
+        Long userId = userUtils.getUserId();
+        User userOld = userService.selectOne(new EntityWrapper<User>().eq("id", userId).eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        if (null == userOld) {
+            log.error("No user found according to user ID parameter:{}", userId);
+            return ResponseObject.businessFailure("未获取到正确的用户!");
+        }
+        UserExtra userExtraOld = userExtraService.selectOne(new EntityWrapper<UserExtra>().eq("user_id", userId).eq(CommonConstant.IS_DELETE, CommonConstant.NOT_DELETE));
+        if (null == userExtraOld) {
+            log.error("No user attached data is queried according to user ID parameter:{}", userId);
+            return ResponseObject.businessFailure("未获取到正确的用户!");
+        }
+        //用户
+        User userEdit = new User();
+        userEdit.setId(userOld.getId());
+        userEdit.setUserName(editUserInfoDTO.getUserName());
+        userEdit.setUpdateTime(new Date());
+        userEdit.setUpdateBy(userId);
+
+        //用户附属
+        UserExtra userExtraEdit = new UserExtra();
+        userExtraEdit.setId(userExtraOld.getId());
+        BeanUtils.copyProperties(editUserInfoDTO, userExtraEdit);
+        userExtraEdit.setBirth(LocalDateTimeUtils.convertDateToLDT(DateUtils.parseDate(editUserInfoDTO.getBirth())));
+        userExtraEdit.setUpdateTime(new Date());
+        userExtraEdit.setUpdateBy(userId);
+        //设置用户的生日(阳历)
+        if (null != editUserInfoDTO.getBirth()) {
+            //TODO 正则校验
+            userExtraEdit.setBirthAnother(getBirthAnother(editUserInfoDTO.getBirth()));
+        }
+        try {
+            userService.updateById(userEdit);
+        } catch (Exception e) {
+            log.error("SQL==>update用户表失败,原因:{}", e.getMessage());
+            throw new BusinessException("Failed to update user information");
+        }
+        try {
+            userExtraService.updateById(userExtraEdit);
+        } catch (Exception e) {
+            log.error("SQL==>update用户附属表失败,原因:{}", e.getMessage());
+            throw new BusinessException("Failed to update user attachment information");
+        }
+        return ResponseObject.success();
+    }
+
+    /**
+     * 获取阳历的日期
+     *
+     * @param birth 日期(农历)
+     * @return 阳历时间
+     */
+    private LocalDateTime getBirthAnother(String birth) {
+        String[] split = birth.split("-");
+        //需要将身份证的农历日期转为当前年份,才可以计算出当前年份的生日时间
+        int year = Integer.parseInt(DateUtils.getYear());
+        int month = Integer.parseInt(split[1]);
+        int monthDay = Integer.parseInt(split[2]);
+        LocalDateTime localDateTime = LocalDateTimeUtils.convertDateToLDT(DateUtils.parseDate(LunarCalendarUtils.getGregorianCalendarDate(year, month, monthDay)));
+        //判断该用户的生日是否已经过去,如果已经过了今年的生日时间,年份需要加1
+        Integer timeDifference = LocalDateTimeUtils.determineWhetherTheCurrentTimeHasPassed(DateUtils.formatDate(LocalDateTimeUtils.convertLDTToDate(localDateTime), DateUtils.DATE_FORMAT));
+        if (timeDifference > 0) {
+            year++;
+            localDateTime = LocalDateTimeUtils.convertDateToLDT(DateUtils.parseDate(LunarCalendarUtils.getGregorianCalendarDate(year, month, monthDay)));
+        }
+        return localDateTime;
     }
 
     /**

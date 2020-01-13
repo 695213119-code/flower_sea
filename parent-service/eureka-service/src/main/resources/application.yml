@@ -1,6 +1,8 @@
 server:
   port: 9000
 
+
+##-------------dev/test---------------
 eureka:
   instance:
     hostname: localhost
@@ -13,3 +15,16 @@ eureka:
   server:
     enable-self-preservation: false
 
+
+##-------------pro---------------
+#eureka:
+#  instance:
+#    hostname: 49.232.143.52
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#  # 开发环境下禁用自我保护机制
+#  server:
+#    enable-self-preservation: false

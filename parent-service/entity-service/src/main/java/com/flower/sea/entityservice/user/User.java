@@ -27,7 +27,6 @@ public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
 
-
     @ApiModelProperty(value = "主键id")
     private Long id;
 
@@ -48,7 +47,7 @@ public class User extends Model<User> {
     @ApiModelProperty(value = "用户账号状态 1-正常 2-禁用")
     private Integer status;
 
-    @ApiModelProperty(value = "创建者")
+        @ApiModelProperty(value = "创建者")
     @TableField("create_by")
     private Long createBy;
 

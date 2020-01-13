@@ -29,7 +29,7 @@ public class UserUtils {
     }
 
     @Data
-    public static class User {
+    private static class User {
         private Long id;
         private String phone;
         private String userName;

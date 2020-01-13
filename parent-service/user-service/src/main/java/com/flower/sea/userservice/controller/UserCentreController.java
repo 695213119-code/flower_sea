@@ -4,8 +4,9 @@ import com.flower.sea.commonservice.recurrence.ResponseObject;
 import com.flower.sea.startercustomapi.annotation.ApiMenuAnnotation;
 import com.flower.sea.startercustomapi.annotation.AuthorityAnnotation;
 import com.flower.sea.startercustomapi.annotation.HeaderRequired;
-import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
-import com.flower.sea.userservice.dto.in.WeChatAppletLoginDTO;
+import com.flower.sea.userservice.dto.in.user.EditUserInfoDTO;
+import com.flower.sea.userservice.dto.in.user.ThirdPartyBindingUserDTO;
+import com.flower.sea.userservice.dto.in.user.WeChatAppletLoginDTO;
 import com.flower.sea.userservice.dto.out.user.UserDetailsDTO;
 import com.flower.sea.userservice.dto.out.user.UserLoginResponseDTO;
 import com.flower.sea.userservice.dto.out.wechat.WechatCallbackDTO;
@@ -64,6 +65,15 @@ public class UserCentreController {
     @HeaderRequired
     public ResponseObject getUserDetails() {
         return userCentreService.getUserDetails();
+    }
+
+
+    @PutMapping("/editUserInfo")
+    @ApiOperation("编辑用户信息")
+    @AuthorityAnnotation(isToken = true)
+    @HeaderRequired
+    public ResponseObject editUserInfo(@ApiParam(value = "编辑用户信息参数DTO", required = true) @RequestBody EditUserInfoDTO editUserInfoDTO) {
+        return userCentreService.editUserInfo(editUserInfoDTO);
     }
 
 

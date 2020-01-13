@@ -14,17 +14,21 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class RedisUtils {
+    
+    private final StringRedisTemplate redisTemplate;
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
-
-    public void setRedisTemplate(StringRedisTemplate redisTemplate) {
+    public RedisUtils(StringRedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
-    public StringRedisTemplate getRedisTemplate() {
-        return this.redisTemplate;
-    }
+//    public void setRedisTemplate(StringRedisTemplate redisTemplate) {
+//        this.redisTemplate = redisTemplate;
+//    }
+//
+//    public StringRedisTemplate getRedisTemplate() {
+//        return this.redisTemplate;
+//    }
 
     /**
      * 删除数据

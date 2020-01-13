@@ -1,4 +1,4 @@
-package com.flower.sea.userservice.dto.in;
+package com.flower.sea.userservice.dto.in.user;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

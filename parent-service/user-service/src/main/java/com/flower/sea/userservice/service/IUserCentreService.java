@@ -1,8 +1,9 @@
 package com.flower.sea.userservice.service;
 
 import com.flower.sea.commonservice.recurrence.ResponseObject;
-import com.flower.sea.userservice.dto.in.ThirdPartyBindingUserDTO;
-import com.flower.sea.userservice.dto.in.WeChatAppletLoginDTO;
+import com.flower.sea.userservice.dto.in.user.EditUserInfoDTO;
+import com.flower.sea.userservice.dto.in.user.ThirdPartyBindingUserDTO;
+import com.flower.sea.userservice.dto.in.user.WeChatAppletLoginDTO;
 import org.springframework.validation.BindingResult;
 
 /**
@@ -43,4 +44,12 @@ public interface IUserCentreService {
      * @return ResponseObject
      */
     ResponseObject getUserDetails();
+
+    /**
+     * 编辑用户信息
+     *
+     * @param editUserInfoDTO 编辑用户信息参数DTO
+     * @return ResponseObject
+     */
+    ResponseObject editUserInfo(EditUserInfoDTO editUserInfoDTO);
 }

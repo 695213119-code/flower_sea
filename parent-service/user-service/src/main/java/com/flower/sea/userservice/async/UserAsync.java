@@ -3,7 +3,7 @@ package com.flower.sea.userservice.async;
 import com.flower.sea.commonservice.exception.DbOperationException;
 import com.flower.sea.commonservice.utils.JsonUtils;
 import com.flower.sea.entityservice.user.UserThirdparty;
-import com.flower.sea.userservice.dto.in.WeChatAppletLoginDTO;
+import com.flower.sea.userservice.dto.in.user.WeChatAppletLoginDTO;
 import com.flower.sea.userservice.user.service.IUserThirdpartyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

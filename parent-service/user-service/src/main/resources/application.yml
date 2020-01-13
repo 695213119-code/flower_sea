@@ -19,6 +19,8 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:mapping/*Mapper.xml
   type-aliases-package: com.flower.sea.entityservice.user
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 #----------------------权限的自动上传---------------------
 auth:

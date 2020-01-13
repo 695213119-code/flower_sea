@@ -8,14 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="interface-service" />
         <module name="gateway-service" />
-        <module name="auth-service" />
-        <module name="core-service" />
+        <module name="entity-service" />
         <module name="eureka-service" />
         <module name="generate-service" />
         <module name="user-service" />
         <module name="common-service" />
+        <module name="auth-service" />
         <module name="data-base-service" />
-        <module name="entity-service" />
+        <module name="core-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -43,4 +43,7 @@ public class UserDetailsDTO {
 
     @ApiModelProperty("用户邮箱")
     private String email;
+
+    @ApiModelProperty("距离下次生日的天数")
+    private Long birthdayDays;
 }
